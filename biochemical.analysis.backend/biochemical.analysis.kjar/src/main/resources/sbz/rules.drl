@@ -1,0 +1,27 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.Results;
+import sbz.biochemical.analysis.common.ReferenceValues;
+import sbz.biochemical.analysis.model.blood.BloodAnalysis;
+import sbz.biochemical.analysis.model.Gender;
+
+rule "Trombocites level - High"
+    when
+        $r: Results(bloodAnalysis.thrombocytes > ReferenceValues.THROMBOCYTES_MAX)
+    then
+        $r.setDiagnosis("Rizik od stvaranja tromba.");
+end
+
+rule "Trombocites level - Low"
+    when
+        $r: Results(bloodAnalysis.thrombocytes < ReferenceValues.THROMBOCYTES_MIN)
+    then
+        $r.setDiagnosis("Rizik od krvarenja.");
+end
+
+rule "Erythrocytes level - Low"
+    when
+        $r: Results(bloodAnalysis.erythrocytes < ReferenceValues.ERYTHROCYTES_MIN_MALE && gender == Gender.MALE)
+    then
+        $r.setDiagnosis("Anemija");
+end
