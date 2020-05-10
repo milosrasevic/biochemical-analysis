@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.my-form-control {
+  height: 25px;
+}
+
+.my-form-group {
+  height: 35px;
+  font-size: smaller;
+}
+
+.background-white {
+  background-color: white;
+}

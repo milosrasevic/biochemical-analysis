@@ -1,0 +1,13 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.Results;
+import sbz.biochemical.analysis.model.PossibleDisease;
+import sbz.biochemical.analysis.constants.Diseases;
+
+rule "Rizik od stvaranja tromba"
+    when
+        $pd: PossibleDisease(description == Diseases.STVARANJE_TROMBA) and
+        $r: Results()
+    then
+        $r.setDiagnosis("ova dijagnoza je postavljena od simptomaaaaaaalalalala");
+end

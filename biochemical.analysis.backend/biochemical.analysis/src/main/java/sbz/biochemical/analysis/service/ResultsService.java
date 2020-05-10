@@ -16,12 +16,12 @@ public class ResultsService {
         this.kieContainer = kieContainer;
     }
 
-    public Results getDiagnosis(Results r) {
+    public String getDiagnosis(Results r) {
         KieSession kieSession = kieContainer.newKieSession();
         kieSession.insert(r);
         kieSession.fireAllRules();
         kieSession.dispose();
-        return r;
+        return r.getDiagnosis();
     }
 
 }

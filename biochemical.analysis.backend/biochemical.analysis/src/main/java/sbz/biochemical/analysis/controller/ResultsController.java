@@ -1,6 +1,7 @@
 package sbz.biochemical.analysis.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,9 +23,10 @@ public class ResultsController {
     }
 
     @PostMapping
-    public Results sendResults(@RequestBody Results results) {
-        Results r1 = new Results(results.getBloodAnalysis(), results.getGender());
+    public ResponseEntity<?> sendResults(@RequestBody Results results) {
+        Results r1 = new Results(results.getGender(), results.getBloodAnalysis(), results.getBonesAnalysis(),
+                results.getElectrolytes(), results.getOrgansAnalysis(), results.getUrineAnalysis());
 
-        return resultsService.getDiagnosis(r1);
+        return new ResponseEntity<String>(resultsService.getDiagnosis(r1), HttpStatus.OK);
     }
 }

@@ -1,4 +1,4 @@
-package sbz.biochemical.analysis.common;
+package sbz.biochemical.analysis.constants;
 
 public final class ReferenceValues {
 
