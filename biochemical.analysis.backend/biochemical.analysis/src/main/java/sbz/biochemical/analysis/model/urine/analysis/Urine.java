@@ -7,12 +7,11 @@ public class Urine implements Serializable {
     private UrineColor urineColor;
     private double protein;
     private double glucose;
-    private double urobilinogen;
+    private boolean urobilinogen;
     private boolean bilirubin;
     private boolean ketones;
     private boolean leukocytes;
     private boolean bacteria;
-    private boolean crystals;
     private boolean yeast;
     private boolean cylinders;
     private boolean semen;
@@ -20,9 +19,9 @@ public class Urine implements Serializable {
     public Urine() {
     }
 
-    public Urine(UrineColor urineColor, double protein, double glucose, double urobilinogen,
+    public Urine(UrineColor urineColor, double protein, double glucose, boolean urobilinogen,
                  boolean bilirubin, boolean ketones, boolean leukocytes, boolean bacteria,
-                 boolean crystals, boolean yeast, boolean cylinders, boolean semen) {
+                 boolean yeast, boolean cylinders, boolean semen) {
         this.urineColor = urineColor;
         this.protein = protein;
         this.glucose = glucose;
@@ -31,7 +30,6 @@ public class Urine implements Serializable {
         this.ketones = ketones;
         this.leukocytes = leukocytes;
         this.bacteria = bacteria;
-        this.crystals = crystals;
         this.yeast = yeast;
         this.cylinders = cylinders;
         this.semen = semen;
@@ -61,11 +59,11 @@ public class Urine implements Serializable {
         this.glucose = glucose;
     }
 
-    public double getUrobilinogen() {
+    public boolean isUrobilinogen() {
         return urobilinogen;
     }
 
-    public void setUrobilinogen(double urobilinogen) {
+    public void setUrobilinogen(boolean urobilinogen) {
         this.urobilinogen = urobilinogen;
     }
 
@@ -99,14 +97,6 @@ public class Urine implements Serializable {
 
     public void setBacteria(boolean bacteria) {
         this.bacteria = bacteria;
-    }
-
-    public boolean isCrystals() {
-        return crystals;
-    }
-
-    public void setCrystals(boolean crystals) {
-        this.crystals = crystals;
     }
 
     public boolean isYeast() {

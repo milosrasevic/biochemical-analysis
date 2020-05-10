@@ -42,25 +42,61 @@ class Blood extends Component {
         return (
             <div className="col-3 pb-3 border rounded ml-1 background-white">
                 <h6 className="mt-2">Blood</h6>
-                <div className="form-group my-form-group">
-                    <label htmlFor="inputLeukocytes">Leukocytes:</label>
-                    <input type="text" name="leukocytes" value={this.state.leukocytes} onChange={this.handleChange} className="form-control my-form-control" id="inputLeukocytes"/>
+                <div className="form-group my-form-group text-left">
+                    <label htmlFor="inputLeukocytes" className="ml-4">Leukocytes:</label>
+                    <div className="row">
+                        <div className="col">
+                            <input type="text" name="leukocytes" value={this.state.leukocytes} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputLeukocytes"/>
+                        </div>
+                        <div className="col-2 mr-5">
+                            *109/L
+                        </div>
+                    </div>
                 </div>
-                <div className="form-group my-form-group">
-                    <label htmlFor="inputErythrocytes">Erythrocytes:</label>
-                    <input type="text" name="erythrocytes" value={this.state.erythrocytes} onChange={this.handleChange} className="form-control my-form-control" id="inputErythrocytes"/>
+                <div className="form-group my-form-group text-left">
+                    <label htmlFor="inputErythrocytes" className="ml-4">Erythrocytes:</label>
+                    <div className="row">
+                        <div className="col">
+                            <input type="text" name="erythrocytes" value={this.state.erythrocytes} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputErythrocytes"/>
+                        </div>
+                        <div className="col-2 mr-5">
+                            *1012/L
+                        </div>
+                    </div>
                 </div>
-                <div className="form-group my-form-group">
-                    <label htmlFor="inputThrombocytes">Thrombocytes:</label>
-                    <input type="text" name="thrombocytes" value={this.state.thrombocytes} onChange={this.handleChange} className="form-control my-form-control" id="inputThrombocytes"/>
+                <div className="form-group my-form-group text-left">
+                    <label htmlFor="inputThrombocytes" className="ml-4">Thrombocytes:</label>
+                    <div className="row">
+                        <div className="col">
+                            <input type="text" name="thrombocytes" value={this.state.thrombocytes} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputThrombocytes"/>
+                        </div>
+                        <div className="col-2 mr-5">
+                            *109/L
+                        </div>
+                    </div>                    
                 </div>
-                <div className="form-group my-form-group">
-                    <label htmlFor="inputHematocrit">Hematocrit:</label>
-                    <input type="text" name="hematocrit" value={this.state.hematocrit} onChange={this.handleChange} className="form-control my-form-control" id="inputHematocrit"/>
+                <div className="form-group my-form-group text-left">
+                    <label htmlFor="inputHematocrit" className="ml-4">Hematocrit:</label>
+                    <div className="row">
+                        <div className="col">
+                            <input type="text" name="hematocrit" value={this.state.hematocrit} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputHematocrit"/>
+                        </div>
+                        <div className="col-2 mr-5">
+                            1/L
+                        </div>
+                    </div>             
+                    
                 </div>
-                <div className="form-group my-form-group">
-                    <label htmlFor="inputHemoglobin">Hemoglobin:</label>
-                    <input type="text" name="hemoglobin" value={this.state.hemoglobin} onChange={this.handleChange} className="form-control my-form-control" id="inputHemoglobin"/>
+                <div className="form-group my-form-group text-left">
+                    <label htmlFor="inputHemoglobin" className="ml-4">Hemoglobin:</label>
+                    <div className="row">
+                        <div className="col">
+                        <input type="text" name="hemoglobin" value={this.state.hemoglobin} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputHemoglobin"/>
+                        </div>
+                        <div className="col-2 mr-5">
+                            g/L
+                        </div>
+                    </div>                                 
                 </div>
                 
                 {/* <button onClick={this.handleSubmit} className="btn btn-primary">Submit</button> */}

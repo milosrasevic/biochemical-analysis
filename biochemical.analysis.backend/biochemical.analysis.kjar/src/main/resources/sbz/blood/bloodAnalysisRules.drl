@@ -4,8 +4,8 @@ import sbz.biochemical.analysis.model.Results;
 import sbz.biochemical.analysis.constants.ReferenceValues;
 import sbz.biochemical.analysis.model.blood.analysis.Blood;
 import sbz.biochemical.analysis.model.Gender;
-import sbz.biochemical.analysis.model.PossibleDisease;
-import sbz.biochemical.analysis.constants.Diseases;
+import constants.ReferenceValues;
+import constants.Diseases;
 
 rule "Trombocytes level - High"
     when
