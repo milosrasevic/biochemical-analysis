@@ -1,0 +1,38 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.Results;
+import sbz.biochemical.analysis.model.bones.BonesAnalysis;
+import sbz.biochemical.analysis.model.bones.analysis.BoneMarrow;
+import sbz.biochemical.analysis.model.Gender;
+import sbz.biochemical.analysis.model.PossibleDisease;
+
+import constants.ReferenceValues;
+import constants.Diseases;
+
+rule "Iron - High - Male"
+    when
+        $r: Results(bonesAnalysis.boneMarrow.iron > ReferenceValues.IRON_MAX_MALE_MCG_DL && gender == Gender.MALE)
+    then
+        insert(new PossibleDisease(Diseases.OSTEOMALACIA));
+end
+
+rule "Iron - High - Female"
+    when
+        $r: Results(bonesAnalysis.boneMarrow.iron > ReferenceValues.IRON_MAX_FEMALE_MCG_DL && gender == Gender.FEMALE)
+    then
+        insert(new PossibleDisease(Diseases.OSTEOMALACIA));
+end
+
+rule "Iron - Low - Male"
+    when
+        $r: Results(bonesAnalysis.boneMarrow.iron < ReferenceValues.IRON_MIN_MALE_MCG_DL && gender == Gender.MALE)
+    then
+        insert(new PossibleDisease(Diseases.OSTEOPOROSIS));
+end
+
+rule "Iron - Low - Female"
+    when
+        $r: Results(bonesAnalysis.boneMarrow.iron < ReferenceValues.IRON_MIN_FEMALE_MCG_DL && gender == Gender.FEMALE)
+    then
+        insert(new PossibleDisease(Diseases.OSTEOPOROSIS));
+end

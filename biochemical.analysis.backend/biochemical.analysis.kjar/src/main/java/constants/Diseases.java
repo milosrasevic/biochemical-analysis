@@ -25,5 +25,7 @@ public class Diseases {
     public static final String KIDNEY_CANCER = "KIDNEY_CANCER";
     public static final String LIVER_CANCER = "LIVER_CANCER";
 
+    public static final String OSTEOPOROSIS = "OSTEOPOROSIS";
+    public static final String OSTEOMALACIA = "OSTEOMALACIA";
 
 }

@@ -4,11 +4,10 @@ import sbz.biochemical.analysis.model.Results;
 import sbz.biochemical.analysis.model.PossibleDisease;
 import constants.Diseases;
 
-rule "Liver cancer question"
+rule "Liver cancer questions"
     when
         $pd: PossibleDisease(description == Diseases.LIVER_CANCER) and
         $r: Results()
     then
-//        $r.setDiagnosis("Do you have symptoms of liver cancer?");
         $r.getSymptomsToCheck().add("lossOfAppetite");
 end

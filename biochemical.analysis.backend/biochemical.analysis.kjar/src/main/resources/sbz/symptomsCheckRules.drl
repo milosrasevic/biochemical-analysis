@@ -1,0 +1,10 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.Symptoms;
+
+rule "Liver cancer symptoms"
+    when
+        $s: Symptoms(lossOfAppetite)
+    then
+        $s.setDiagnosis("Liver cancer");
+end

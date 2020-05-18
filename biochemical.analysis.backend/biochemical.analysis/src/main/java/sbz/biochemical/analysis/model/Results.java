@@ -17,7 +17,6 @@ public class Results implements Serializable {
     private Electrolytes electrolytes;
     private OrgansAnalysis organsAnalysis;
     private UrineAnalysis urineAnalysis;
-    private String diagnosis;
     private ArrayList<String> symptomsToCheck;
 
     public Results() {
@@ -32,7 +31,6 @@ public class Results implements Serializable {
         this.electrolytes = electrolytes;
         this.organsAnalysis = organsAnalysis;
         this.urineAnalysis = urineAnalysis;
-        this.diagnosis = "";
         this.symptomsToCheck = new ArrayList<String>();
     }
 
@@ -82,14 +80,6 @@ public class Results implements Serializable {
 
     public void setUrineAnalysis(UrineAnalysis urineAnalysis) {
         this.urineAnalysis = urineAnalysis;
-    }
-
-    public String getDiagnosis() {
-        return diagnosis;
-    }
-
-    public void setDiagnosis(String diagnosis) {
-        this.diagnosis = diagnosis;
     }
 
     public ArrayList<String> getSymptomsToCheck() {
