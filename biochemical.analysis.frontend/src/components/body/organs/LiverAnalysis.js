@@ -1,20 +1,13 @@
 import React, { Component } from 'react'
+import { handleChange } from '../../../store/actions/resultsActions';
+import { connect } from 'react-redux';
 
 class LiverAnalysis extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            ALT: '',
-            AST: '',
-            gamaGT: '',
-            bilirubin: ''
-        }
-    }
-
+    
     handleChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
+        this.props.handleChange({
+            name: e.target.name,
+            value: e.target.value
         });
     }
 
@@ -26,7 +19,7 @@ class LiverAnalysis extends Component {
                     <label htmlFor="inputALT" className="ml-4">ALT:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="ALT" value={this.state.ALT} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputALT"/>
+                            <input type="text" name="ALT" value={this.props.ALT} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputALT"/>
                         </div>
                         <div className="col-2 mr-5">
                             U/L
@@ -37,7 +30,7 @@ class LiverAnalysis extends Component {
                     <label htmlFor="inputAST" className="ml-4">AST:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="AST" value={this.state.AST} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputAST"/>
+                            <input type="text" name="AST" value={this.props.AST} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputAST"/>
                         </div>
                         <div className="col-2 mr-5">
                             U/L
@@ -48,7 +41,7 @@ class LiverAnalysis extends Component {
                     <label htmlFor="inputgamaGT" className="ml-4">Gama GT:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="gamaGT" value={this.state.gamaGT} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputgamaGT"/>
+                            <input type="text" name="gamaGT" value={this.props.gamaGT} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputgamaGT"/>
                         </div>
                         <div className="col-2 mr-5">
                             U/L
@@ -59,7 +52,7 @@ class LiverAnalysis extends Component {
                     <label htmlFor="inputBilirubin" className="ml-4">Bilirubin:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="bilirubin" value={this.state.bilirubin} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputBilirubin"/>
+                            <input type="text" name="bilirubin" value={this.props.bilirubin} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputBilirubin"/>
                         </div>
                         <div className="col-2 mr-5">
                             U/L
@@ -71,4 +64,18 @@ class LiverAnalysis extends Component {
     }
 }
 
-export default LiverAnalysis;
+const mapStateToProps = state => {
+    return {
+        ALT: state.ALT,
+        AST: state.AST,
+        gamaGT: state.gamaGT,
+        bilirubin: state.bilirubin
+    }
+}
+
+const mapDispatchToProps = {
+    handleChange
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(LiverAnalysis);

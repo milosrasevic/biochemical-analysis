@@ -1,20 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { handleChange } from '../../../store/actions/resultsActions';
+import { connect } from 'react-redux';
 
 class Fat extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            cholesterol: '',
-            HDLcholesterol: '',
-            LDLcholesterol: '',
-            triglycerides: ''
-        }
-    }
-
+    
     handleChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
+        this.props.handleChange({
+            name: e.target.name,
+            value: e.target.value
         });
     }
 
@@ -26,7 +19,7 @@ class Fat extends Component {
                     <label htmlFor="inputCholesterol" className="ml-4">Cholesterol:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="cholesterol" value={this.state.cholesterol} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputCholesterol"/>
+                            <input type="text" name="cholesterol" value={this.props.cholesterol} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputCholesterol"/>
                         </div>
                         <div className="col-2 mr-5">
                             mmol/L
@@ -37,7 +30,7 @@ class Fat extends Component {
                     <label htmlFor="inputHDLcholesterol" className="ml-4">HDL Cholesterol:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="HDLcholesterol" value={this.state.HDLcholesterol} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputHDLcholesterol"/>
+                            <input type="text" name="HDLcholesterol" value={this.props.HDLcholesterol} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputHDLcholesterol"/>
                         </div>
                         <div className="col-2 mr-5">
                             mmol/L
@@ -48,7 +41,7 @@ class Fat extends Component {
                     <label htmlFor="inputLDLcholesterol" className="ml-4">LDL Cholesterol:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="LDLcholesterol" value={this.state.LDLcholesterol} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputLDLcholesterol"/>
+                            <input type="text" name="LDLcholesterol" value={this.props.LDLcholesterol} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputLDLcholesterol"/>
                         </div>
                         <div className="col-2 mr-5">
                             mmol/L
@@ -59,7 +52,7 @@ class Fat extends Component {
                     <label htmlFor="inputTriglycerides" className="ml-4">Triglycerides:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="triglycerides" value={this.state.triglycerides} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputTriglycerides"/>
+                            <input type="text" name="triglycerides" value={this.props.triglycerides} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputTriglycerides"/>
                         </div>
                         <div className="col-2 mr-5">
                             mmol/L
@@ -71,4 +64,17 @@ class Fat extends Component {
     }
 }
 
-export default Fat;
+const mapStateToProps = state => {
+    return {
+        cholesterol: state.cholesterol,
+        HDLcholesterol: state.HDLcholesterol,
+        LDLcholesterol: state.LDLcholesterol,
+        triglycerides: state.triglycerides
+    }
+}
+
+const mapDispatchToProps = {
+    handleChange
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Fat);

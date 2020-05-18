@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sbz.biochemical.analysis.model.Results;
 
+import java.util.ArrayList;
+
 @Service
 public class ResultsService {
 
@@ -16,12 +18,12 @@ public class ResultsService {
         this.kieContainer = kieContainer;
     }
 
-    public String getDiagnosis(Results r) {
+    public ArrayList<String> getSymptomsToCheck(Results r) {
         KieSession kieSession = kieContainer.newKieSession();
         kieSession.insert(r);
         kieSession.fireAllRules();
         kieSession.dispose();
-        return r.getDiagnosis();
+        return r.getSymptomsToCheck();
     }
 
 }

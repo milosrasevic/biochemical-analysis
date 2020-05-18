@@ -1,19 +1,15 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { handleChange } from '../../../store/actions/resultsActions';
+
 
 class BiochemicalParameters extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            serumLook: '',
-            glucose: ''
-        }
-    }
-
+    
     handleChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+        this.props.handleChange({
+            name: e.target.name,
+            value: e.target.value
+        });
     }
 
     render() {
@@ -34,7 +30,7 @@ class BiochemicalParameters extends Component {
                     <label htmlFor="inputGlucose" className="ml-4">Glucose:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="glucose" value={this.state.glucose} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputGlucose"/>
+                            <input type="text" name="glucose" value={this.props.glucose} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputGlucose"/>
                         </div>
                         <div className="col-2 mr-5">
                             mmol/L
@@ -47,4 +43,15 @@ class BiochemicalParameters extends Component {
     }
 }
 
-export default BiochemicalParameters
+const mapStateToProps = state => {
+    return {
+        serumLook: state.serumLook,
+        glucose: state.glucose
+    }
+}
+
+const mapDispatchToProps = {
+    handleChange
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BiochemicalParameters)

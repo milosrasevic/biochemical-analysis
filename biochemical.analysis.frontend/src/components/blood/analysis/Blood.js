@@ -1,41 +1,30 @@
 import React, { Component } from 'react';
-import { sendResults } from '../../../store/actions/resultsActions';
+import { handleChange, handleSubmit, sendResults } from '../../../store/actions/resultsActions';
 import { connect } from 'react-redux';
 
 class Blood extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            leukocytes: '',
-            erythrocytes: '',
-            thrombocytes: '',
-            hematocrit: '',
-            hemoglobin: ''
-        }
-    }
 
     handleChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
+        this.props.handleChange({
+            name: e.target.name,
+            value: e.target.value
         });
     }
 
     handleSubmit = () => {
-        let bloodAnalysis = {
-            leukocytes: this.state.leukocytes,
-            erythrocytes: this.state.erythrocytes,
-            thrombocytes: this.state.thrombocytes,
-            hematocrit: this.state.hematocrit,
-            hemoglobin: this.state.hemoglobin
-        }
+        // let bloodAnalysis = {
+        //     leukocytes: this.state.leukocytes,
+        //     erythrocytes: this.state.erythrocytes,
+        //     thrombocytes: this.state.thrombocytes,
+        //     hematocrit: this.state.hematocrit,
+        //     hemoglobin: this.state.hemoglobin
+        // }
 
-        let results = {
-            bloodAnalysis,
-            gender: 0
-        }
-
-        this.props.sendResults(results);
+        // let results = {
+        //     bloodAnalysis,
+        //     gender: 0
+        // }
+        this.props.sendResults(this.props.store);
     }
 
     render() {
@@ -46,7 +35,7 @@ class Blood extends Component {
                     <label htmlFor="inputLeukocytes" className="ml-4">Leukocytes:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="leukocytes" value={this.state.leukocytes} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputLeukocytes"/>
+                            <input type="text" name="leukocytes" value={this.props.leukocytes  || ''} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputLeukocytes"/>
                         </div>
                         <div className="col-2 mr-5">
                             *109/L
@@ -57,7 +46,7 @@ class Blood extends Component {
                     <label htmlFor="inputErythrocytes" className="ml-4">Erythrocytes:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="erythrocytes" value={this.state.erythrocytes} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputErythrocytes"/>
+                            <input type="text" name="erythrocytes" value={this.props.erythrocytes} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputErythrocytes"/>
                         </div>
                         <div className="col-2 mr-5">
                             *1012/L
@@ -68,7 +57,7 @@ class Blood extends Component {
                     <label htmlFor="inputThrombocytes" className="ml-4">Thrombocytes:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="thrombocytes" value={this.state.thrombocytes} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputThrombocytes"/>
+                            <input type="text" name="thrombocytes" value={this.props.thrombocytes} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputThrombocytes"/>
                         </div>
                         <div className="col-2 mr-5">
                             *109/L
@@ -79,7 +68,7 @@ class Blood extends Component {
                     <label htmlFor="inputHematocrit" className="ml-4">Hematocrit:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="hematocrit" value={this.state.hematocrit} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputHematocrit"/>
+                            <input type="text" name="hematocrit" value={this.props.hematocrit} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputHematocrit"/>
                         </div>
                         <div className="col-2 mr-5">
                             1/L
@@ -91,7 +80,7 @@ class Blood extends Component {
                     <label htmlFor="inputHemoglobin" className="ml-4">Hemoglobin:</label>
                     <div className="row">
                         <div className="col">
-                        <input type="text" name="hemoglobin" value={this.state.hemoglobin} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputHemoglobin"/>
+                        <input type="text" name="hemoglobin" value={this.props.hemoglobin} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputHemoglobin"/>
                         </div>
                         <div className="col-2 mr-5">
                             g/L
@@ -99,14 +88,27 @@ class Blood extends Component {
                     </div>                                 
                 </div>
                 
-                {/* <button onClick={this.handleSubmit} className="btn btn-primary">Submit</button> */}
+                <button onClick={this.handleSubmit} className="btn btn-primary">Submit</button>
             </div>
         )
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        leukocytes: state.leukocytes,
+        erythrocytes: state.erythrocytes,
+        thrombocytes: state.thrombocytes,
+        hemoglobin: state.hemoglobin,
+        hematocrit: state.hematocrit,
+        store: state
+    }
+}
+
 const mapDispatchToProps = {
+    handleChange,
+    handleSubmit,
     sendResults
 }
 
-export default connect(null, mapDispatchToProps)(Blood);
+export default connect(mapStateToProps, mapDispatchToProps)(Blood);

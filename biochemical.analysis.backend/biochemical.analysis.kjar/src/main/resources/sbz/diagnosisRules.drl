@@ -2,12 +2,13 @@ package sbz;
 
 import sbz.biochemical.analysis.model.Results;
 import sbz.biochemical.analysis.model.PossibleDisease;
-import sbz.biochemical.analysis.constants.Diseases;
+import constants.Diseases;
 
-rule "Rizik od stvaranja tromba"
+rule "Liver cancer question"
     when
-        $pd: PossibleDisease(description == Diseases.STVARANJE_TROMBA) and
+        $pd: PossibleDisease(description == Diseases.LIVER_CANCER) and
         $r: Results()
     then
-        $r.setDiagnosis("ova dijagnoza je postavljena od simptomaaaaaaalalalala");
+//        $r.setDiagnosis("Do you have symptoms of liver cancer?");
+        $r.getSymptomsToCheck().add("lossOfAppetite");
 end

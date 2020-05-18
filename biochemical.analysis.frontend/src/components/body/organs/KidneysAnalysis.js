@@ -1,18 +1,13 @@
 import React, { Component } from 'react'
+import { handleChange } from '../../../store/actions/resultsActions';
+import { connect } from 'react-redux';
 
 class KidneysAnalysis extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            urea: '',
-            creatinine: ''
-        }
-    }
-
+    
     handleChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
+        this.props.handleChange({
+            name: e.target.name,
+            value: e.target.value
         });
     }
 
@@ -24,7 +19,7 @@ class KidneysAnalysis extends Component {
                     <label htmlFor="inputUrea" className="ml-4">Urea:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="urea" value={this.state.urea} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputUrea"/>
+                            <input type="text" name="urea" value={this.props.urea} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputUrea"/>
                         </div>
                         <div className="col-2 mr-5">
                             mmol/L
@@ -35,7 +30,7 @@ class KidneysAnalysis extends Component {
                     <label htmlFor="inputCreatinine" className="ml-4">Creatinine:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="creatinine" value={this.state.creatinine} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputCreatinine"/>
+                            <input type="text" name="creatinine" value={this.props.creatinine} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputCreatinine"/>
                         </div>
                         <div className="col-2 mr-5">
                             mg/dL
@@ -47,4 +42,15 @@ class KidneysAnalysis extends Component {
     }
 }
 
-export default KidneysAnalysis;
+const mapStateToProps = state => {
+    return {
+        urea: state.urea,
+        creatinine: state.creatinine
+    }
+}
+
+const mapDispatchToProps = {
+    handleChange
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(KidneysAnalysis);

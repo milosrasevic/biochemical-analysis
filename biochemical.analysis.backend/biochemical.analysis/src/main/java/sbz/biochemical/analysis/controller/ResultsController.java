@@ -11,6 +11,8 @@ import sbz.biochemical.analysis.model.Gender;
 import sbz.biochemical.analysis.model.Results;
 import sbz.biochemical.analysis.service.ResultsService;
 
+import java.util.ArrayList;
+
 @RestController
 @RequestMapping(path = "api/results")
 public class ResultsController {
@@ -27,6 +29,6 @@ public class ResultsController {
         Results r1 = new Results(results.getGender(), results.getBloodAnalysis(), results.getBonesAnalysis(),
                 results.getElectrolytes(), results.getOrgansAnalysis(), results.getUrineAnalysis());
 
-        return new ResponseEntity<String>(resultsService.getDiagnosis(r1), HttpStatus.OK);
+        return new ResponseEntity<ArrayList<String>>(resultsService.getSymptomsToCheck(r1), HttpStatus.OK);
     }
 }

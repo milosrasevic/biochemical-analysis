@@ -1,1 +1,4 @@
 export const SEND_RESULTS = 'SEND_RESULTS';
+export const HANDLE_CHANGE = 'HANDLE_CHANGE';
+export const SET_CHANGE = 'SET_CHANGE';
+export const HANDLE_SUBMIT = 'HANDLE_SUBMIT';

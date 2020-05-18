@@ -1,18 +1,13 @@
 import React, { Component } from 'react'
+import { handleChange } from '../../../store/actions/resultsActions';
+import { connect } from 'react-redux';
 
 class ElectrolytesAnalysis extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            sodium: '',
-            potassium: ''
-        }
-    }
-
+   
     handleChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
+        this.props.handleChange({
+            name: e.target.name,
+            value: e.target.value
         });
     }
 
@@ -25,7 +20,7 @@ class ElectrolytesAnalysis extends Component {
                     <label htmlFor="inputSodium" className="ml-4">Sodium:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="sodium" value={this.state.sodium} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputSodium"/>
+                            <input type="text" name="sodium" value={this.props.sodium} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputSodium"/>
                         </div>
                         <div className="col-2 mr-5">
                             mmol/L
@@ -36,7 +31,7 @@ class ElectrolytesAnalysis extends Component {
                     <label htmlFor="inputPotassium" className="ml-4">Potassium:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="potassium" value={this.state.potassium} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputPotassium"/>
+                            <input type="text" name="potassium" value={this.props.potassium} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputPotassium"/>
                         </div>
                         <div className="col-2 mr-5">
                             mmol/L
@@ -48,4 +43,15 @@ class ElectrolytesAnalysis extends Component {
     }
 }
 
-export default ElectrolytesAnalysis;
+const mapStateToProps = state => {
+    return {
+        sodium: state.sodium,
+        potassium: state.potassium
+    }
+}
+
+const mapDispatchToProps = {
+    handleChange
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ElectrolytesAnalysis);

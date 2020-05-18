@@ -7,6 +7,7 @@ import sbz.biochemical.analysis.model.organs.OrgansAnalysis;
 import sbz.biochemical.analysis.model.urine.UrineAnalysis;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Results implements Serializable {
 
@@ -17,6 +18,7 @@ public class Results implements Serializable {
     private OrgansAnalysis organsAnalysis;
     private UrineAnalysis urineAnalysis;
     private String diagnosis;
+    private ArrayList<String> symptomsToCheck;
 
     public Results() {
     }
@@ -31,6 +33,7 @@ public class Results implements Serializable {
         this.organsAnalysis = organsAnalysis;
         this.urineAnalysis = urineAnalysis;
         this.diagnosis = "";
+        this.symptomsToCheck = new ArrayList<String>();
     }
 
     public Gender getGender() {
@@ -87,5 +90,13 @@ public class Results implements Serializable {
 
     public void setDiagnosis(String diagnosis) {
         this.diagnosis = diagnosis;
+    }
+
+    public ArrayList<String> getSymptomsToCheck() {
+        return symptomsToCheck;
+    }
+
+    public void setSymptomsToCheck(ArrayList<String> symptomsToCheck) {
+        this.symptomsToCheck = symptomsToCheck;
     }
 }

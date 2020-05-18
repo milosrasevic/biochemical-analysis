@@ -1,31 +1,116 @@
 package sbz;
 
 import sbz.biochemical.analysis.model.Results;
-import sbz.biochemical.analysis.constants.ReferenceValues;
 import sbz.biochemical.analysis.model.blood.analysis.Blood;
 import sbz.biochemical.analysis.model.Gender;
+import sbz.biochemical.analysis.model.PossibleDisease;
+
 import constants.ReferenceValues;
 import constants.Diseases;
 
 rule "Trombocytes level - High"
     when
-        $r: Results(bloodAnalysis.blood.thrombocytes > ReferenceValues.THROMBOCYTES_MAX)
+        $r: Results(bloodAnalysis.blood.thrombocytes > ReferenceValues.THROMBOCYTES_MAX_109_L)
     then
-        insert(new PossibleDisease(Diseases.STVARANJE_TROMBA));
+        insert(new PossibleDisease(Diseases.THROMBOSIS));
 end
 
 rule "Trombocytes level - Low"
     when
-        $r: Results(bloodAnalysis.blood.thrombocytes < ReferenceValues.THROMBOCYTES_MIN)
+        $r: Results(bloodAnalysis.blood.thrombocytes < ReferenceValues.THROMBOCYTES_MIN_109_L)
     then
-        insert(new PossibleDisease(Diseases.RIZIK_OD_KRVARENJA));
+        insert(new PossibleDisease(Diseases.THROMBOCYTOPENIA));
 end
 
-rule "Erythrocytes level - Low"
+rule "Erythrocytes level - Low - Male"
     when
-        $r: Results(bloodAnalysis.blood.erythrocytes < ReferenceValues.ERYTHROCYTES_MIN_MALE && gender == Gender.MALE)
+        $r: Results(bloodAnalysis.blood.erythrocytes < ReferenceValues.ERYTHROCYTES_MIN_MALE_1012_L && gender == Gender.MALE)
     then
-        insert(new PossibleDisease(Diseases.ANEMIJA));
+        insert(new PossibleDisease(Diseases.ANEMIA));
 end
 
+rule "Erythrocytes level - Low - Female"
+    when
+        $r: Results(bloodAnalysis.blood.erythrocytes < ReferenceValues.ERYTHROCYTES_MIN_FEMALE_1012_L && gender == Gender.FEMALE)
+    then
+        insert(new PossibleDisease(Diseases.ANEMIA));
+end
 
+rule "Erythrocytes level - High - Male"
+    when
+        $r: Results(bloodAnalysis.blood.erythrocytes > ReferenceValues.ERYTHROCYTES_MAX_MALE_1012_L && gender == Gender.MALE)
+    then
+        insert(new PossibleDisease(Diseases.SLEEP_APNEA));
+        insert(new PossibleDisease(Diseases.PULMONARY_FIBROSIS));
+end
+
+rule "Erythrocytes level - High - Female"
+    when
+        $r: Results(bloodAnalysis.blood.erythrocytes > ReferenceValues.ERYTHROCYTES_MAX_FEMALE_1012_L && gender == Gender.FEMALE)
+    then
+        insert(new PossibleDisease(Diseases.SLEEP_APNEA));
+        insert(new PossibleDisease(Diseases.PULMONARY_FIBROSIS));
+end
+
+rule "Leukocytes level - Low"
+    when
+        $r: Results(bloodAnalysis.blood.leukocytes < ReferenceValues.LEUKOCYTES_MIN_109_L)
+    then
+        insert(new PossibleDisease(Diseases.VIRAL_INFECTION));
+        insert(new PossibleDisease(Diseases.LUPUS));
+        insert(new PossibleDisease(Diseases.RHEUMATOID_ARTHRITIS));
+end
+
+rule "Leukocytes level - High"
+    when
+        $r: Results(bloodAnalysis.blood.leukocytes > ReferenceValues.LEUKOCYTES_MAX_109_L)
+    then
+        insert(new PossibleDisease(Diseases.BACTERIAL_INFECTION));
+        insert(new PossibleDisease(Diseases.LEUKEMIA));
+end
+
+rule "Hematocrit level - Low - Male"
+    when
+        $r: Results(bloodAnalysis.blood.hematocrit < ReferenceValues.HEMATOCRIT_MIN_MALE_1_L && gender == Gender.MALE)
+    then
+        insert(new PossibleDisease(Diseases.ANEMIA));
+end
+
+rule "Hematocrit level - Low - Female"
+    when
+        $r: Results(bloodAnalysis.blood.hematocrit < ReferenceValues.HEMATOCRIT_MIN_FEMALE_1_L && gender == Gender.FEMALE)
+    then
+        insert(new PossibleDisease(Diseases.ANEMIA));
+end
+
+rule "Hematocrit level - High - Male"
+    when
+        $r: Results(bloodAnalysis.blood.hematocrit > ReferenceValues.HEMATOCRIT_MAX_MALE_1_L && gender == Gender.MALE)
+    then
+        insert(new PossibleDisease(Diseases.THROMBOSIS));
+end
+
+rule "Hematocrit level - High - Female"
+    when
+        $r: Results(bloodAnalysis.blood.hematocrit > ReferenceValues.HEMATOCRIT_MAX_FEMALE_1_L && gender == Gender.FEMALE)
+    then
+        insert(new PossibleDisease(Diseases.THROMBOSIS));
+end
+
+rule "Hemoglobin level - Low"
+    when
+        $r: Results(bloodAnalysis.blood.hemoglobin < ReferenceValues.HEMOGLOBIN_MIN_G_L)
+    then
+        insert(new PossibleDisease(Diseases.ANEMIA));
+        insert(new PossibleDisease(Diseases.CIRRHOSIS));
+        insert(new PossibleDisease(Diseases.CHRONIC_KIDNEY_FAILURE));
+end
+
+rule "Hemoglobin level - High"
+    when
+        $r: Results(bloodAnalysis.blood.hemoglobin > ReferenceValues.HEMOGLOBIN_MAX_G_L)
+    then
+        insert(new PossibleDisease(Diseases.HEART_FAILURE));
+        insert(new PossibleDisease(Diseases.KIDNEY_CANCER));
+        insert(new PossibleDisease(Diseases.LIVER_CANCER));
+end
