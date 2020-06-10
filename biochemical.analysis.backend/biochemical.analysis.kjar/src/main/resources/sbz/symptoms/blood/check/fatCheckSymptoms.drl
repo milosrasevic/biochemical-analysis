@@ -1,0 +1,80 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.SymptomsAndDiseases;
+import sbz.biochemical.analysis.model.analysis.Diagnosis;
+import constants.SymptomsList;
+import constants.Diseases;
+
+global Diagnosis diagnosis;
+
+rule "Heart failure symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.HEART_FAILURE)
+        $count: Number(intValue >= 3) from accumulate(
+            String(
+                toString() memberOf SymptomsList.heartFailureSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Heart failure";
+        if($count.intValue() > 5) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 4) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end
+
+rule "Kidney cancer symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.KIDNEY_CANCER)
+        $count: Number(intValue >= 2) from accumulate(
+            String(
+                toString() memberOf SymptomsList.kidneyCancerSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Kidney cancer";
+        if($count.intValue() > 4) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 3) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end
+
+rule "Liver cancer symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.LIVER_CANCER)
+        $count: Number(intValue >= 2) from accumulate(
+            String(
+                toString() memberOf SymptomsList.liverCancerSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Liver cancer";
+        if($count.intValue() > 4) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 3) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end

@@ -1,0 +1,50 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Results;
+import sbz.biochemical.analysis.model.analysis.PossibleDisease;
+import constants.Diseases;
+import constants.SymptomsList;
+import sbz.biochemical.analysis.model.analysis.SymptomsAndDiseases;
+
+global SymptomsAndDiseases symptomsAndDiseases;
+
+rule "Osteoporosis questions"
+    when
+        $pd: PossibleDisease(description == Diseases.OSTEOPOROSIS)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.osteoporosisSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.OSTEOPOROSIS);
+end
+
+rule "Osteomalacia questions"
+    when
+        $pd: PossibleDisease(description == Diseases.OSTEOMALACIA)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.osteomalaciaSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.OSTEOMALACIA);
+end
+
+
+rule "Hemophilia questions"
+    when
+        $pd: PossibleDisease(description == Diseases.HEMOPHILIA)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.hemophiliaSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.HEMOPHILIA);
+end
+
+rule "Hemachromatosis questions"
+    when
+        $pd: PossibleDisease(description == Diseases.HEMACHROMATOSIS)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.hemachromatosisSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.HEMACHROMATOSIS);
+end
+
+rule "Polycythemia vera questions"
+    when
+        $pd: PossibleDisease(description == Diseases.POLYCYTHEMIA_VERA)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.polycythemiaVeraSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.POLYCYTHEMIA_VERA);
+end

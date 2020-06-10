@@ -4,24 +4,24 @@ import java.io.Serializable;
 
 public class OtherParameters implements Serializable {
 
-    private double fibrinogen;
+    private Double fibrinogen;
     private boolean proteins;
-    private double PT;
+    private Double pt;
 
     public OtherParameters() {
     }
 
-    public OtherParameters(double fibrinogen, boolean proteins, double PT) {
+    public OtherParameters(double fibrinogen, boolean proteins, double pt) {
         this.fibrinogen = fibrinogen;
         this.proteins = proteins;
-        this.PT = PT;
+        this.pt = pt;
     }
 
-    public double getFibrinogen() {
+    public Double getFibrinogen() {
         return fibrinogen;
     }
 
-    public void setFibrinogen(double fibrinogen) {
+    public void setFibrinogen(Double fibrinogen) {
         this.fibrinogen = fibrinogen;
     }
 
@@ -33,11 +33,11 @@ public class OtherParameters implements Serializable {
         this.proteins = proteins;
     }
 
-    public double getPT() {
-        return PT;
+    public Double getPt() {
+        return pt;
     }
 
-    public void setPT(double PT) {
-        this.PT = PT;
+    public void setPt(Double pt) {
+        this.pt = pt;
     }
 }

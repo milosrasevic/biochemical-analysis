@@ -105,7 +105,7 @@ public class ReferenceValues {
 
     //Urine
     public static final double PROTEINS_MAX_MG_D = 150;
-    public static final double GLUOCSE_MAX_MG_D = 130;
+    public static final double GLUCOSE_MAX_MG_D = 130;
 
 
 }

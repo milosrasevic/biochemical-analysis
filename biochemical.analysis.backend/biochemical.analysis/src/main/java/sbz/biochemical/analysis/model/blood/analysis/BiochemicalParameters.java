@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class BiochemicalParameters implements Serializable {
 
     private SerumLook serumLook;
-    private double glucose;
+    private Double glucose;
 
     public BiochemicalParameters() {
     }
@@ -23,11 +23,11 @@ public class BiochemicalParameters implements Serializable {
         this.serumLook = serumLook;
     }
 
-    public double getGlucose() {
+    public Double getGlucose() {
         return glucose;
     }
 
-    public void setGlucose(double glucose) {
+    public void setGlucose(Double glucose) {
         this.glucose = glucose;
     }
 }

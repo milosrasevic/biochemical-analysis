@@ -1,0 +1,67 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Results;
+import sbz.biochemical.analysis.model.blood.analysis.Fat;
+import sbz.biochemical.analysis.model.Gender;
+import sbz.biochemical.analysis.model.analysis.Anomaly;
+import sbz.biochemical.analysis.model.blood.BloodAnalysis;
+
+import constants.ReferenceValues;
+import constants.Anomalies;
+
+rule "Cholesterol level - High"
+    when
+        $r: Results(bloodAnalysis.fat.cholesterol > ReferenceValues.CHOLESTEROL_MAX_MMOL_L)
+    then
+        insert(new Anomaly(Anomalies.CHOLESTEROL_ANOMALY_HIGH));
+end
+
+rule "Cholesterol level - Low"
+    when
+        $r: Results(bloodAnalysis.fat.cholesterol < ReferenceValues.CHOLESTEROL_MIN_MMOL_L)
+    then
+        insert(new Anomaly(Anomalies.CHOLESTEROL_ANOMALY_LOW));
+end
+
+rule "HDL cholesterol level - High"
+    when
+        $r: Results(bloodAnalysis.fat.hdlCholesterol > ReferenceValues.HDL_CHOLESTEROL_MAX_MMOL_L)
+    then
+        insert(new Anomaly(Anomalies.HDL_CHOLESTEROL_ANOMALY_HIGH));
+end
+
+rule "HDL cholesterol level - Low"
+    when
+        $r: Results(bloodAnalysis.fat.hdlCholesterol < ReferenceValues.HDL_CHOLESTEROL_MIN_MMOL_L)
+    then
+        insert(new Anomaly(Anomalies.HDL_CHOLESTEROL_ANOMALY_LOW));
+end
+
+rule "LDL cholesterol level - High"
+    when
+        $r: Results(bloodAnalysis.fat.ldlCholesterol > ReferenceValues.LDL_CHOLESTEROL_MAX_MMOL_L)
+    then
+        insert(new Anomaly(Anomalies.LDL_CHOLESTEROL_ANOMALY_HIGH));
+end
+
+rule "LDL cholesterol level - Low"
+    when
+        $r: Results(bloodAnalysis.fat.ldlCholesterol < ReferenceValues.LDL_CHOLESTEROL_MIN_MMOL_L)
+    then
+        insert(new Anomaly(Anomalies.LDL_CHOLESTEROL_ANOMALY_LOW));
+end
+
+
+rule "Triglycerides level - High"
+    when
+        $r: Results(bloodAnalysis.fat.triglycerides > ReferenceValues.TRIGLYCERIDES_MAX_MMOL_L)
+    then
+        insert(new Anomaly(Anomalies.TRIGLYCERIDES_ANOMALY_HIGH));
+end
+
+rule "Triglycerides level - Low"
+    when
+        $r: Results(bloodAnalysis.fat.triglycerides < ReferenceValues.TRIGLYCERIDES_MIN_MMOL_L)
+    then
+        insert(new Anomaly(Anomalies.TRIGLYCERIDES_ANOMALY_LOW));
+end

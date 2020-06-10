@@ -88,7 +88,7 @@ class Blood extends Component {
                     </div>                                 
                 </div>
                 
-                <button onClick={this.handleSubmit} className="btn btn-primary">Submit</button>
+                {/* <button onClick={this.handleSubmit} className="btn btn-primary">Submit</button> */}
             </div>
         )
     }

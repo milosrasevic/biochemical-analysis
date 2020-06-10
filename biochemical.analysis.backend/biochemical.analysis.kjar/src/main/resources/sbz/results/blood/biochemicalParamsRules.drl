@@ -1,0 +1,46 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Results;
+import sbz.biochemical.analysis.model.blood.analysis.BiochemicalParameters;
+import sbz.biochemical.analysis.model.analysis.Anomaly;
+import sbz.biochemical.analysis.model.blood.BloodAnalysis;
+import sbz.biochemical.analysis.model.blood.analysis.SerumLook;
+
+import constants.ReferenceValues;
+import constants.Anomalies;
+
+
+rule "Glucose level - High"
+    when
+        $r: Results(bloodAnalysis.biochemicalParameters.glucose > ReferenceValues.GLUCOSE_MAX_MMOL_L)
+    then
+        insert(new Anomaly(Anomalies.GLUCOSE_ANOMALY_HIGH));
+end
+
+rule "Glucose level - Low"
+    when
+        $r: Results(bloodAnalysis.biochemicalParameters.glucose < ReferenceValues.GLUCOSE_MIN_MMOL_L)
+    then
+        insert(new Anomaly(Anomalies.GLUCOSE_ANOMALY_LOW));
+end
+
+rule "Serum look - hemolytic"
+    when
+        $r: Results(bloodAnalysis.biochemicalParameters.serumLook == SerumLook.HEMOLYTIC)
+    then
+        insert(new Anomaly(Anomalies.SERUM_LOOK_ANOMALY_HEMOLYTIC));
+end
+
+rule "Serum look - icteric"
+    when
+        $r: Results(bloodAnalysis.biochemicalParameters.serumLook == SerumLook.ICTERIC)
+    then
+        insert(new Anomaly(Anomalies.SERUM_LOOK_ANOMALY_ICTERIC));
+end
+
+rule "Serum look - lipemic"
+    when
+        $r: Results(bloodAnalysis.biochemicalParameters.serumLook == SerumLook.LIPEMIC)
+    then
+        insert(new Anomaly(Anomalies.SERUM_LOOK_ANOMALY_LIPEMIC));
+end

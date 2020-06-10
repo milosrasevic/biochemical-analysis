@@ -1,0 +1,128 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.SymptomsAndDiseases;
+import sbz.biochemical.analysis.model.analysis.Diagnosis;
+import constants.SymptomsList;
+import constants.Diseases;
+
+global Diagnosis diagnosis;
+
+rule "Osteoporosis symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.OSTEOPOROSIS)
+        $count: Number(intValue >= 2) from accumulate(
+            String(
+                toString() memberOf SymptomsList.osteoporosisSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Osteoporosis";
+        if($count.intValue() > 3) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 2) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end
+
+rule "Osteomalacia symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.OSTEOMALACIA)
+        $count: Number(intValue >= 2) from accumulate(
+            String(
+                toString() memberOf SymptomsList.osteomalaciaSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Osteomalacia";
+        if($count.intValue() > 3) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 2) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end
+
+rule "Hemophilia symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.HEMOPHILIA)
+        $count: Number(intValue >= 2) from accumulate(
+            String(
+                toString() memberOf SymptomsList.hemophiliaSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Hemophilia";
+        if($count.intValue() > 3) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 2) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end
+
+rule "Hemachromatosis symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.HEMACHROMATOSIS)
+        $count: Number(intValue >= 2) from accumulate(
+            String(
+                toString() memberOf SymptomsList.hemachromatosisSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Hemachromatosis";
+        if($count.intValue() > 3) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 2) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end
+
+rule "Polycythemia vera symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.POLYCYTHEMIA_VERA)
+        $count: Number(intValue >= 2) from accumulate(
+            String(
+                toString() memberOf SymptomsList.polycythemiaVeraSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Polycythemia vera";
+        if($count.intValue() > 3) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 2) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end

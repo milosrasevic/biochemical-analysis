@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class Electrolytes implements Serializable {
 
-    private double sodium;
-    private double potassium;
+    private Double sodium;
+    private Double potassium;
 
     public Electrolytes() {
     }
@@ -15,19 +15,19 @@ public class Electrolytes implements Serializable {
         this.potassium = potassium;
     }
 
-    public double getSodium() {
+    public Double getSodium() {
         return sodium;
     }
 
-    public void setSodium(double sodium) {
+    public void setSodium(Double sodium) {
         this.sodium = sodium;
     }
 
-    public double getPotassium() {
+    public Double getPotassium() {
         return potassium;
     }
 
-    public void setPotassium(double potassium) {
+    public void setPotassium(Double potassium) {
         this.potassium = potassium;
     }
 }

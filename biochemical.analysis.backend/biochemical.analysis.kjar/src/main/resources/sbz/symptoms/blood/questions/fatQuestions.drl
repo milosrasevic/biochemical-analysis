@@ -1,0 +1,33 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Results;
+import sbz.biochemical.analysis.model.analysis.PossibleDisease;
+import constants.Diseases;
+import constants.SymptomsList;
+import sbz.biochemical.analysis.model.analysis.SymptomsAndDiseases;
+
+global SymptomsAndDiseases symptomsAndDiseases;
+
+rule "Heart failure questions"
+    when
+        $pd: PossibleDisease(description == Diseases.HEART_FAILURE)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.heartFailureSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.HEART_FAILURE);
+end
+
+rule "Kidney cancer questions"
+    when
+        $pd: PossibleDisease(description == Diseases.KIDNEY_CANCER)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.kidneyCancerSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.KIDNEY_CANCER);
+end
+
+rule "Liver cancer questions"
+    when
+        $pd: PossibleDisease(description == Diseases.LIVER_CANCER)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.liverCancerSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.LIVER_CANCER);
+end

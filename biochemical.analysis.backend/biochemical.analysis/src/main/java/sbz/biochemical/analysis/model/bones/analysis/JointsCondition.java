@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class JointsCondition implements Serializable {
 
-    private double uricAcid;
+    private Double uricAcid;
 
     public JointsCondition() {
     }
@@ -13,11 +13,11 @@ public class JointsCondition implements Serializable {
         this.uricAcid = uricAcid;
     }
 
-    public double getUricAcid() {
+    public Double getUricAcid() {
         return uricAcid;
     }
 
-    public void setUricAcid(double uricAcid) {
+    public void setUricAcid(Double uricAcid) {
         this.uricAcid = uricAcid;
     }
 }

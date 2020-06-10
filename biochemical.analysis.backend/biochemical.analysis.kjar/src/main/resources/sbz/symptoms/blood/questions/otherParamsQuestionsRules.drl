@@ -1,0 +1,33 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Results;
+import sbz.biochemical.analysis.model.analysis.PossibleDisease;
+import constants.Diseases;
+import constants.SymptomsList;
+import sbz.biochemical.analysis.model.analysis.SymptomsAndDiseases;
+
+global SymptomsAndDiseases symptomsAndDiseases;
+
+rule "Aortic Aneurysm questions"
+    when
+        $pd: PossibleDisease(description == Diseases.AORTIC_ANEURYSM)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.aorticAneurysmSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.AORTIC_ANEURYSM);
+end
+
+rule "Keratitis questions"
+    when
+        $pd: PossibleDisease(description == Diseases.KERATITIS)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.keratitisSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.KERATITIS);
+end
+
+rule "Hansens disease questions"
+    when
+        $pd: PossibleDisease(description == Diseases.HANSENS_DISEASE)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.hansensDiseaseSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.HANSENS_DISEASE);
+end

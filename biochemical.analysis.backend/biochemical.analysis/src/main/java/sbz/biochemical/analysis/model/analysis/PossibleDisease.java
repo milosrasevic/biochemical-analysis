@@ -1,4 +1,4 @@
-package sbz.biochemical.analysis.model;
+package sbz.biochemical.analysis.model.analysis;
 
 import java.io.Serializable;
 

@@ -1,0 +1,46 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Results;
+import sbz.biochemical.analysis.model.blood.analysis.OtherParameters;
+import sbz.biochemical.analysis.model.Gender;
+import sbz.biochemical.analysis.model.analysis.Anomaly;
+import sbz.biochemical.analysis.model.blood.BloodAnalysis;
+
+import constants.ReferenceValues;
+import constants.Anomalies;
+
+rule "Fibrinogen level - High"
+    when
+        $r: Results(bloodAnalysis.otherParameters.fibrinogen > ReferenceValues.FIBRINOGEN_MAX_MG_DL)
+    then
+        insert(new Anomaly(Anomalies.FIBRINOGEN_ANOMALY_HIGH));
+end
+
+rule "Fibrinogen level - Low"
+    when
+        $r: Results(bloodAnalysis.otherParameters.fibrinogen < ReferenceValues.FIBRINOGEN_MIN_MG_DL)
+    then
+        insert(new Anomaly(Anomalies.FIBRINOGEN_ANOMALY_LOW));
+end
+
+rule "Protein anomaly"
+    when
+        $r: Results(bloodAnalysis.otherParameters.proteins)
+    then
+        insert(new Anomaly(Anomalies.PROTEIN_ANOMALY));
+end
+
+rule "PT level - High"
+    when
+        $r: Results(bloodAnalysis.otherParameters.pt > ReferenceValues.PT_MAX_S)
+    then
+        insert(new Anomaly(Anomalies.PT_ANOMALY_HIGH));
+end
+
+rule "PT level - Low"
+    when
+        $r: Results(bloodAnalysis.otherParameters.pt < ReferenceValues.PT_MIN_S)
+    then
+        insert(new Anomaly(Anomalies.PT_ANOMALY_LOW));
+end
+

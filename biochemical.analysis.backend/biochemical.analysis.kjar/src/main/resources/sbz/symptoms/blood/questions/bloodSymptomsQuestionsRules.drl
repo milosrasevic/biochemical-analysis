@@ -1,0 +1,50 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Results;
+import sbz.biochemical.analysis.model.analysis.PossibleDisease;
+import constants.Diseases;
+import constants.SymptomsList;
+import sbz.biochemical.analysis.model.analysis.SymptomsAndDiseases;
+
+global SymptomsAndDiseases symptomsAndDiseases;
+
+rule "Aplastic anemia questions"
+    when
+        $pd: PossibleDisease(description == Diseases.APLASTIC_ANEMIA)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.aplasticAnemiaSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.APLASTIC_ANEMIA);
+end
+
+rule "Sleep apnea questions"
+    when
+        $pd: PossibleDisease(description == Diseases.SLEEP_APNEA)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.sleepApneaSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.SLEEP_APNEA);
+end
+
+rule "Pulmonary fibrosis questions"
+    when
+        $pd: PossibleDisease(description == Diseases.PULMONARY_FIBROSIS)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.pulmonaryFibrosisSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.PULMONARY_FIBROSIS);
+end
+
+rule "Leukemia questions"
+    when
+        $pd: PossibleDisease(description == Diseases.LEUKEMIA)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.leukemiaSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.LEUKEMIA);
+end
+
+rule "Lupus questions"
+    when
+        $pd: PossibleDisease(description == Diseases.LUPUS)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.lupusSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.LUPUS);
+end
+

@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 public class LiverCondition implements Serializable {
 
-    private double ALT;
-    private double AST;
-    private double gamaGT;
-    private double bilirubin;
+    private Double ALT;
+    private Double AST;
+    private Double gamaGT;
+    private Double bilirubin;
 
     public LiverCondition() {
     }
@@ -19,35 +19,35 @@ public class LiverCondition implements Serializable {
         this.bilirubin = bilirubin;
     }
 
-    public double getALT() {
+    public Double getALT() {
         return ALT;
     }
 
-    public void setALT(double ALT) {
+    public void setALT(Double ALT) {
         this.ALT = ALT;
     }
 
-    public double getAST() {
+    public Double getAST() {
         return AST;
     }
 
-    public void setAST(double AST) {
+    public void setAST(Double AST) {
         this.AST = AST;
     }
 
-    public double getGamaGT() {
+    public Double getGamaGT() {
         return gamaGT;
     }
 
-    public void setGamaGT(double gamaGT) {
+    public void setGamaGT(Double gamaGT) {
         this.gamaGT = gamaGT;
     }
 
-    public double getBilirubin() {
+    public Double getBilirubin() {
         return bilirubin;
     }
 
-    public void setBilirubin(double bilirubin) {
+    public void setBilirubin(Double bilirubin) {
         this.bilirubin = bilirubin;
     }
 }

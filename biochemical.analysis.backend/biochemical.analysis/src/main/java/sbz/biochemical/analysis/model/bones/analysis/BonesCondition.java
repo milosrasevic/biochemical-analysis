@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class BonesCondition implements Serializable {
 
-    private double alkalinePhosphatase;
+    private Double alkalinePhosphatase;
 
     public BonesCondition() {
     }
@@ -13,11 +13,11 @@ public class BonesCondition implements Serializable {
         this.alkalinePhosphatase = alkalinePhosphatase;
     }
 
-    public double getAlkalinePhosphatase() {
+    public Double getAlkalinePhosphatase() {
         return alkalinePhosphatase;
     }
 
-    public void setAlkalinePhosphatase(double alkalinePhosphatase) {
+    public void setAlkalinePhosphatase(Double alkalinePhosphatase) {
         this.alkalinePhosphatase = alkalinePhosphatase;
     }
 }

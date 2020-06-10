@@ -1,5 +1,6 @@
-package sbz.biochemical.analysis.model;
+package sbz.biochemical.analysis.model.analysis;
 
+import sbz.biochemical.analysis.model.Gender;
 import sbz.biochemical.analysis.model.blood.BloodAnalysis;
 import sbz.biochemical.analysis.model.bones.BonesAnalysis;
 import sbz.biochemical.analysis.model.minerals.Electrolytes;
@@ -7,7 +8,6 @@ import sbz.biochemical.analysis.model.organs.OrgansAnalysis;
 import sbz.biochemical.analysis.model.urine.UrineAnalysis;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Results implements Serializable {
 
@@ -17,7 +17,6 @@ public class Results implements Serializable {
     private Electrolytes electrolytes;
     private OrgansAnalysis organsAnalysis;
     private UrineAnalysis urineAnalysis;
-    private ArrayList<String> symptomsToCheck;
 
     public Results() {
     }
@@ -31,7 +30,6 @@ public class Results implements Serializable {
         this.electrolytes = electrolytes;
         this.organsAnalysis = organsAnalysis;
         this.urineAnalysis = urineAnalysis;
-        this.symptomsToCheck = new ArrayList<String>();
     }
 
     public Gender getGender() {
@@ -80,13 +78,5 @@ public class Results implements Serializable {
 
     public void setUrineAnalysis(UrineAnalysis urineAnalysis) {
         this.urineAnalysis = urineAnalysis;
-    }
-
-    public ArrayList<String> getSymptomsToCheck() {
-        return symptomsToCheck;
-    }
-
-    public void setSymptomsToCheck(ArrayList<String> symptomsToCheck) {
-        this.symptomsToCheck = symptomsToCheck;
     }
 }

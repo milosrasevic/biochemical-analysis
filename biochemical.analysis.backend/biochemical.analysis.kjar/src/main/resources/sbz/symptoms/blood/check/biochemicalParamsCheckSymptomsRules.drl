@@ -1,0 +1,82 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.SymptomsAndDiseases;
+import sbz.biochemical.analysis.model.analysis.Diagnosis;
+import constants.SymptomsList;
+import constants.Diseases;
+
+global Diagnosis diagnosis;
+
+rule "Rheumatoid Arthritis symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.RHEUMATOID_ARTHRITIS)
+        $count: Number(intValue >= 2) from accumulate(
+            String(
+                toString() memberOf SymptomsList.rheumatoidArthritisSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Rheumatoid Arthritis";
+        if($count.intValue() > 3) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 2) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end
+
+rule "Cirrhosis symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.CIRRHOSIS)
+        $count: Number(intValue >= 3) from accumulate(
+            String(
+                toString() memberOf SymptomsList.cirrhosisSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Cirrhosis";
+        if($count.intValue() > 5) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 4) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end
+
+rule "Chronic kidney failure symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.CHRONIC_KIDNEY_FAILURE)
+        $count: Number(intValue >= 3) from accumulate(
+            String(
+                toString() memberOf SymptomsList.chronicKidneyFailureSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Chronic kidney failure";
+        if($count.intValue() > 6) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 5) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end
+
+

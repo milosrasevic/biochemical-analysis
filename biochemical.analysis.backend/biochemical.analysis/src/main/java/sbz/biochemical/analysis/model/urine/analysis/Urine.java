@@ -5,8 +5,8 @@ import java.io.Serializable;
 public class Urine implements Serializable {
 
     private UrineColor urineColor;
-    private double protein;
-    private double glucose;
+    private Double protein;
+    private Double glucose;
     private boolean urobilinogen;
     private boolean bilirubin;
     private boolean ketones;
@@ -43,19 +43,19 @@ public class Urine implements Serializable {
         this.urineColor = urineColor;
     }
 
-    public double getProtein() {
+    public Double getProtein() {
         return protein;
     }
 
-    public void setProtein(double protein) {
+    public void setProtein(Double protein) {
         this.protein = protein;
     }
 
-    public double getGlucose() {
+    public Double getGlucose() {
         return glucose;
     }
 
-    public void setGlucose(double glucose) {
+    public void setGlucose(Double glucose) {
         this.glucose = glucose;
     }
 

@@ -5,11 +5,11 @@ import java.io.Serializable;
 
 public class Blood implements Serializable {
 
-    private double leukocytes;
-    private double erythrocytes;
-    private double thrombocytes;
-    private double hematocrit;
-    private double hemoglobin;
+    private Double leukocytes;
+    private Double erythrocytes;
+    private Double thrombocytes;
+    private Double hematocrit;
+    private Double hemoglobin;
 
     public Blood() {
     }
@@ -22,43 +22,43 @@ public class Blood implements Serializable {
         this.hemoglobin = hemoglobin;
     }
 
-    public double getLeukocytes() {
+    public Double getLeukocytes() {
         return leukocytes;
     }
 
-    public void setLeukocytes(double leukocytes) {
+    public void setLeukocytes(Double leukocytes) {
         this.leukocytes = leukocytes;
     }
 
-    public double getErythrocytes() {
+    public Double getErythrocytes() {
         return erythrocytes;
     }
 
-    public void setErythrocytes(double erythrocytes) {
+    public void setErythrocytes(Double erythrocytes) {
         this.erythrocytes = erythrocytes;
     }
 
-    public double getThrombocytes() {
+    public Double getThrombocytes() {
         return thrombocytes;
     }
 
-    public void setThrombocytes(double thrombocytes) {
+    public void setThrombocytes(Double thrombocytes) {
         this.thrombocytes = thrombocytes;
     }
 
-    public double getHematocrit() {
+    public Double getHematocrit() {
         return hematocrit;
     }
 
-    public void setHematocrit(double hematocrit) {
+    public void setHematocrit(Double hematocrit) {
         this.hematocrit = hematocrit;
     }
 
-    public double getHemoglobin() {
+    public Double getHemoglobin() {
         return hemoglobin;
     }
 
-    public void setHemoglobin(double hemoglobin) {
+    public void setHemoglobin(Double hemoglobin) {
         this.hemoglobin = hemoglobin;
     }
 }

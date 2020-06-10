@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class KidneysCondition implements Serializable {
 
-    private double urea;
-    private double creatinine;
+    private Double urea;
+    private Double creatinine;
 
     public KidneysCondition() {
     }
@@ -15,19 +15,19 @@ public class KidneysCondition implements Serializable {
         this.creatinine = creatinine;
     }
 
-    public double getUrea() {
+    public Double getUrea() {
         return urea;
     }
 
-    public void setUrea(double urea) {
+    public void setUrea(Double urea) {
         this.urea = urea;
     }
 
-    public double getCreatinine() {
+    public Double getCreatinine() {
         return creatinine;
     }
 
-    public void setCreatinine(double creatinine) {
+    public void setCreatinine(Double creatinine) {
         this.creatinine = creatinine;
     }
 }

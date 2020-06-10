@@ -1,0 +1,129 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.SymptomsAndDiseases;
+import sbz.biochemical.analysis.model.analysis.Diagnosis;
+import constants.SymptomsList;
+import constants.Diseases;
+
+global Diagnosis diagnosis;
+
+rule "Aplastic anemia symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.APLASTIC_ANEMIA)
+        $count: Number(intValue >= 3) from accumulate(
+            String(
+                toString() memberOf SymptomsList.aplasticAnemiaSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Aplastic anemia";
+        if($count.intValue() > 4) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 3) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end
+
+rule "Sleep apnea symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.SLEEP_APNEA)
+        $count: Number(intValue >= 2) from accumulate(
+            String(
+                toString() memberOf SymptomsList.sleepApneaSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Sleep apnea";
+        if($count.intValue() > 3) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 2) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end
+
+rule "Pulmonary fibroses symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.PULMONARY_FIBROSIS)
+        $count: Number(intValue >= 2) from accumulate(
+            String(
+                toString() memberOf SymptomsList.pulmonaryFibrosisSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Pulmonary fibrosis";
+        if($count.intValue() > 3) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 2) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end
+
+rule "Leukemia symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.LEUKEMIA)
+        $count: Number(intValue >= 3) from accumulate(
+            String(
+                toString() memberOf SymptomsList.leukemiaSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Leukemia";
+        if($count.intValue() > 5) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 4) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end
+
+rule "Lupus symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.LUPUS)
+        $count: Number(intValue >= 3) from accumulate(
+            String(
+                toString() memberOf SymptomsList.lupusSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Lupus";
+        if($count.intValue() > 4) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 3) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end
+

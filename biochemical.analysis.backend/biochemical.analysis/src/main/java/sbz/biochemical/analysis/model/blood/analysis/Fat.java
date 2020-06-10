@@ -4,50 +4,50 @@ import java.io.Serializable;
 
 public class Fat implements Serializable {
 
-    private double cholesterol;
-    private double HDLcholesterol;
-    private double LDLcholesterol;
-    private double triglycerides;
+    private Double cholesterol;
+    private Double hdlCholesterol;
+    private Double ldlCholesterol;
+    private Double triglycerides;
 
     public Fat() {
     }
 
-    public Fat(double cholesterol, double HDLcholesterol, double LDLcholesterol, double triglycerides) {
+    public Fat(double cholesterol, double hdlCholesterol, double ldlCholesterol, double triglycerides) {
         this.cholesterol = cholesterol;
-        this.HDLcholesterol = HDLcholesterol;
-        this.LDLcholesterol = LDLcholesterol;
+        this.hdlCholesterol = hdlCholesterol;
+        this.ldlCholesterol = ldlCholesterol;
         this.triglycerides = triglycerides;
     }
 
-    public double getCholesterol() {
+    public Double getCholesterol() {
         return cholesterol;
     }
 
-    public void setCholesterol(double cholesterol) {
+    public void setCholesterol(Double cholesterol) {
         this.cholesterol = cholesterol;
     }
 
-    public double getHDLcholesterol() {
-        return HDLcholesterol;
+    public Double getHdlCholesterol() {
+        return hdlCholesterol;
     }
 
-    public void setHDLcholesterol(double HDLcholesterol) {
-        this.HDLcholesterol = HDLcholesterol;
+    public void setHdlCholesterol(Double hdlCholesterol) {
+        this.hdlCholesterol = hdlCholesterol;
     }
 
-    public double getLDLcholesterol() {
-        return LDLcholesterol;
+    public Double getLdlCholesterol() {
+        return ldlCholesterol;
     }
 
-    public void setLDLcholesterol(double LDLcholesterol) {
-        this.LDLcholesterol = LDLcholesterol;
+    public void setLdlCholesterol(Double ldlCholesterol) {
+        this.ldlCholesterol = ldlCholesterol;
     }
 
-    public double getTriglycerides() {
+    public Double getTriglycerides() {
         return triglycerides;
     }
 
-    public void setTriglycerides(double triglycerides) {
+    public void setTriglycerides(Double triglycerides) {
         this.triglycerides = triglycerides;
     }
 }

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class BoneMarrow implements Serializable {
 
-    private double iron;
+    private Double iron;
 
     public BoneMarrow() {
     }
@@ -13,11 +13,11 @@ public class BoneMarrow implements Serializable {
         this.iron = iron;
     }
 
-    public double getIron() {
+    public Double getIron() {
         return iron;
     }
 
-    public void setIron(double iron) {
+    public void setIron(Double iron) {
         this.iron = iron;
     }
 }

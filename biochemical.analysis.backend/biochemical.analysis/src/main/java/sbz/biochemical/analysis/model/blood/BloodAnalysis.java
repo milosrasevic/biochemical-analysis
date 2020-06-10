@@ -5,6 +5,7 @@ import sbz.biochemical.analysis.model.blood.analysis.Blood;
 import sbz.biochemical.analysis.model.blood.analysis.Fat;
 import sbz.biochemical.analysis.model.blood.analysis.OtherParameters;
 
+import javax.validation.Valid;
 import java.io.Serializable;
 
 public class BloodAnalysis implements Serializable {

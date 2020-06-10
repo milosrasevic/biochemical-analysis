@@ -1,0 +1,33 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Results;
+import sbz.biochemical.analysis.model.analysis.PossibleDisease;
+import constants.Diseases;
+import constants.SymptomsList;
+import sbz.biochemical.analysis.model.analysis.SymptomsAndDiseases;
+
+global SymptomsAndDiseases symptomsAndDiseases;
+
+rule "Rheumatoid Arthritis questions"
+    when
+        $pd: PossibleDisease(description == Diseases.RHEUMATOID_ARTHRITIS)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.rheumatoidArthritisSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.RHEUMATOID_ARTHRITIS);
+end
+
+rule "Cirrhosis questions"
+    when
+        $pd: PossibleDisease(description == Diseases.CIRRHOSIS)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.cirrhosisSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.CIRRHOSIS);
+end
+
+rule "Chronic kidney failure questions"
+    when
+        $pd: PossibleDisease(description == Diseases.CHRONIC_KIDNEY_FAILURE)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.chronicKidneyFailureSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.CHRONIC_KIDNEY_FAILURE);
+end
