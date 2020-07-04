@@ -1,0 +1,109 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Results;
+import sbz.biochemical.analysis.model.urine.UrineAnalysis;
+import sbz.biochemical.analysis.model.urine.analysis.UrineColor;
+import sbz.biochemical.analysis.model.urine.analysis.Urine;
+import sbz.biochemical.analysis.model.Gender;
+import sbz.biochemical.analysis.model.analysis.Anomaly;
+
+import constants.ReferenceValues;
+import constants.Anomalies;
+
+rule "Urine color - Yellow"
+    when
+        $r: Results(urineAnalysis.urine.urineColor == UrineColor.YELLOW)
+    then
+        insert(new Anomaly(Anomalies.URINE_COLOR_YELLOW));
+end
+
+rule "Urine color - Pink"
+    when
+        $r: Results(urineAnalysis.urine.urineColor == UrineColor.PINK)
+    then
+        insert(new Anomaly(Anomalies.URINE_COLOR_PINK));
+end
+
+rule "Urine color - Orange"
+    when
+        $r: Results(urineAnalysis.urine.urineColor == UrineColor.ORANGE)
+    then
+        insert(new Anomaly(Anomalies.URINE_COLOR_ORANGE));
+end
+
+rule "Urine color - Dark brown"
+    when
+        $r: Results(urineAnalysis.urine.urineColor == UrineColor.DARK_BROWN)
+    then
+        insert(new Anomaly(Anomalies.URINE_COLOR_DARK_BROWN));
+end
+
+rule "Protein - High"
+    when
+        $r: Results(urineAnalysis.urine.protein > ReferenceValues.PROTEINS_MAX_MG_D)
+    then
+        insert(new Anomaly(Anomalies.PROTEINS_ANOMALY_HIGH));
+end
+
+rule "Glucose - High"
+    when
+        $r: Results(urineAnalysis.urine.glucose > ReferenceValues.GLUCOSE_MAX_MG_D)
+    then
+        insert(new Anomaly(Anomalies.GLUCOSE_URINE_ANOMALY_HIGH));
+end
+
+rule "Urobilinogen"
+    when
+        $r: Results(urineAnalysis.urine.urobilinogen)
+    then
+        insert(new Anomaly(Anomalies.UROBILINOGEN_ANOMALY));
+end
+
+rule "Bilirubin"
+    when
+        $r: Results(urineAnalysis.urine.bilirubin)
+    then
+        insert(new Anomaly(Anomalies.BILIRUBIN_ANOMALY));
+end
+
+rule "Ketones"
+    when
+        $r: Results(urineAnalysis.urine.ketones)
+    then
+        insert(new Anomaly(Anomalies.KETONES_ANOMALY));
+end
+
+rule "Leukocytes"
+    when
+        $r: Results(urineAnalysis.urine.leukocytes)
+    then
+        insert(new Anomaly(Anomalies.LEUKOCYTES_ANOMALY));
+end
+
+rule "Bacteria"
+    when
+        $r: Results(urineAnalysis.urine.bacteria)
+    then
+        insert(new Anomaly(Anomalies.BACTERIA_ANOMALY));
+end
+
+rule "Yeast"
+    when
+        $r: Results(urineAnalysis.urine.yeast)
+    then
+        insert(new Anomaly(Anomalies.YEAST_ANOMALY));
+end
+
+rule "Cylinders"
+    when
+        $r: Results(urineAnalysis.urine.cylinders)
+    then
+        insert(new Anomaly(Anomalies.CYLINDERS_ANOMALY));
+end
+
+rule "Semen"
+    when
+        $r: Results(urineAnalysis.urine.semen)
+    then
+        insert(new Anomaly(Anomalies.SEMEN_ANOMALY));
+end

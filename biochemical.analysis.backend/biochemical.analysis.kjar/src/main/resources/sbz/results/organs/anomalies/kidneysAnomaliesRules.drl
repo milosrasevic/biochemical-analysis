@@ -1,0 +1,66 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Results;
+import sbz.biochemical.analysis.model.organs.OrgansAnalysis;
+import sbz.biochemical.analysis.model.organs.analysis.KidneysCondition;
+import sbz.biochemical.analysis.model.Gender;
+import sbz.biochemical.analysis.model.analysis.Anomaly;
+
+import constants.ReferenceValues;
+import constants.Anomalies;
+
+rule "Urea - High - Male"
+    when
+        $r: Results(organsAnalysis.kidneysCondition.urea > ReferenceValues.UREA_MAX_MALE_MMOL_L && gender == Gender.MALE)
+    then
+        insert(new Anomaly(Anomalies.UREA_ANOMALY_HIGH));
+end
+
+rule "Urea - High - Female"
+    when
+        $r: Results(organsAnalysis.kidneysCondition.urea > ReferenceValues.UREA_MAX_FEMALE_MMOL_L && gender == Gender.FEMALE)
+    then
+        insert(new Anomaly(Anomalies.UREA_ANOMALY_HIGH));
+end
+
+rule "Urea - Low - Male"
+    when
+        $r: Results(organsAnalysis.kidneysCondition.urea < ReferenceValues.UREA_MIN_MALE_MMOL_L && gender == Gender.MALE)
+    then
+        insert(new Anomaly(Anomalies.UREA_ANOMALY_LOW));
+end
+
+rule "Urea - Low - Female"
+    when
+        $r: Results(organsAnalysis.kidneysCondition.urea < ReferenceValues.UREA_MIN_FEMALE_MMOL_L && gender == Gender.FEMALE)
+    then
+        insert(new Anomaly(Anomalies.UREA_ANOMALY_LOW));
+end
+
+rule "Creatinine - High - Male"
+    when
+        $r: Results(organsAnalysis.kidneysCondition.creatinine > ReferenceValues.CREATININE_MAX_MALE_MG_DL && gender == Gender.MALE)
+    then
+        insert(new Anomaly(Anomalies.CREATININE_ANOMALY_HIGH));
+end
+
+rule "Creatinine - High - Female"
+    when
+        $r: Results(organsAnalysis.kidneysCondition.creatinine > ReferenceValues.CREATININE_MAX_FEMALE_MG_DL && gender == Gender.FEMALE)
+    then
+        insert(new Anomaly(Anomalies.CREATININE_ANOMALY_HIGH));
+end
+
+rule "Creatinine - Low - Male"
+    when
+        $r: Results(organsAnalysis.kidneysCondition.creatinine < ReferenceValues.CREATININE_MIN_MALE_MG_DL && gender == Gender.MALE)
+    then
+        insert(new Anomaly(Anomalies.CREATININE_ANOMALY_LOW));
+end
+
+rule "Creatinine - Low - Female"
+    when
+        $r: Results(organsAnalysis.kidneysCondition.creatinine < ReferenceValues.CREATININE_MIN_FEMALE_MG_DL && gender == Gender.FEMALE)
+    then
+        insert(new Anomaly(Anomalies.CREATININE_ANOMALY_LOW));
+end

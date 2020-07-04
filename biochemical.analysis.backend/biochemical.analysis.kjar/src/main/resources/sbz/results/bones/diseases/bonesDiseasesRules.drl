@@ -1,0 +1,52 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Anomaly;
+import sbz.biochemical.analysis.model.analysis.PossibleDisease;
+
+import constants.Diseases;
+import constants.Anomalies;
+
+rule "Osteoporosis indicators"
+    when
+        $a1: Anomaly(description == Anomalies.IRON_ANOMALY_HIGH) and
+        $a2: Anomaly(description == Anomalies.ALKALINE_PHOSPHATASE_ANOMALY_HIGH) and
+        $a3: Anomaly(description == Anomalies.URIC_ACID_ANOMALY_HIGH)
+    then
+        insert(new PossibleDisease(Diseases.OSTEOPOROSIS));
+end
+
+rule "Osteomalacia indicators"
+    when
+        $a1: Anomaly(description == Anomalies.IRON_ANOMALY_LOW) and
+        $a2: Anomaly(description == Anomalies.ALKALINE_PHOSPHATASE_ANOMALY_LOW) and
+        $a3: Anomaly(description == Anomalies.URIC_ACID_ANOMALY_LOW)
+    then
+        insert(new PossibleDisease(Diseases.OSTEOMALACIA));
+end
+
+rule "Hemophilia indicators"
+    when
+        $a1: Anomaly(description == Anomalies.IRON_ANOMALY_LOW) and
+        $a2: Anomaly(description == Anomalies.ALKALINE_PHOSPHATASE_ANOMALY_HIGH)
+    then
+        insert(new PossibleDisease(Diseases.HEMOPHILIA));
+end
+
+rule "Hemachromatosis indicators"
+    when
+        $a1: Anomaly(description == Anomalies.IRON_ANOMALY_HIGH) and
+        $a2: Anomaly(description == Anomalies.URIC_ACID_ANOMALY_HIGH)
+    then
+        insert(new PossibleDisease(Diseases.HEMACHROMATOSIS));
+end
+
+rule "Polycythemia vera indicators"
+    when
+        $a1: Anomaly(description == Anomalies.IRON_ANOMALY_HIGH) and
+        $a2: Anomaly(description == Anomalies.ALKALINE_PHOSPHATASE_ANOMALY_LOW) and
+        $a3: Anomaly(description == Anomalies.URIC_ACID_ANOMALY_LOW)
+
+    then
+        insert(new PossibleDisease(Diseases.POLYCYTHEMIA_VERA));
+end
+

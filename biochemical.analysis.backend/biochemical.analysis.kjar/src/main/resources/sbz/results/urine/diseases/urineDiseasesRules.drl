@@ -1,0 +1,52 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Anomaly;
+import sbz.biochemical.analysis.model.analysis.PossibleDisease;
+
+import constants.Diseases;
+import constants.Anomalies;
+
+rule "Varicella indicators"
+    when
+        $a1: Anomaly(description == Anomalies.PROTEINS_ANOMALY_HIGH) and
+        $a2: Anomaly(description == Anomalies.UROBILINOGEN_ANOMALY) and
+        $a3: Anomaly(description == Anomalies.BACTERIA_ANOMALY)
+    then
+        insert(new PossibleDisease(Diseases.VARICELLA));
+end
+
+rule "Dengue indicators"
+    when
+        $a1: Anomaly(description == Anomalies.GLUCOSE_URINE_ANOMALY_HIGH) and
+        $a2: Anomaly(description == Anomalies.LEUKOCYTES_ANOMALY) and
+        $a3: Anomaly(description == Anomalies.CYLINDERS_ANOMALY)
+    then
+        insert(new PossibleDisease(Diseases.DENGUE));
+end
+
+rule "Diabetes indicators"
+    when
+        $a1: Anomaly(description == Anomalies.GLUCOSE_URINE_ANOMALY_HIGH) and
+        $a2: Anomaly(description == Anomalies.URINE_COLOR_DARK_BROWN) and
+        $a3: Anomaly(description == Anomalies.KETONES_ANOMALY)
+    then
+        insert(new PossibleDisease(Diseases.DIABETES));
+end
+
+rule "Malaria indicators"
+    when
+        $a1: Anomaly(description == Anomalies.URINE_COLOR_PINK) and
+        $a2: Anomaly(description == Anomalies.YEAST_ANOMALY) and
+        $a3: Anomaly(description == Anomalies.CYLINDERS_ANOMALY)
+    then
+        insert(new PossibleDisease(Diseases.MALARIA));
+end
+
+rule "Meningitis indicators"
+    when
+        $a1: Anomaly(description == Anomalies.URINE_COLOR_YELLOW) and
+        $a2: Anomaly(description == Anomalies.SEMEN_ANOMALY) and
+        $a3: Anomaly(description == Anomalies.CYLINDERS_ANOMALY)
+    then
+        insert(new PossibleDisease(Diseases.MENINGITIS));
+end

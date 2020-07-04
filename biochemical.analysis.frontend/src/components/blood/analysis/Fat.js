@@ -30,7 +30,7 @@ class Fat extends Component {
                     <label htmlFor="inputHDLcholesterol" className="ml-4">HDL Cholesterol:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="HDLcholesterol" value={this.props.HDLcholesterol} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputHDLcholesterol"/>
+                            <input type="text" name="hdlCholesterol" value={this.props.hdlCholesterol} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputHDLcholesterol"/>
                         </div>
                         <div className="col-2 mr-5">
                             mmol/L
@@ -41,7 +41,7 @@ class Fat extends Component {
                     <label htmlFor="inputLDLcholesterol" className="ml-4">LDL Cholesterol:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="LDLcholesterol" value={this.props.LDLcholesterol} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputLDLcholesterol"/>
+                            <input type="text" name="ldlCholesterol" value={this.props.ldlCholesterol} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputLDLcholesterol"/>
                         </div>
                         <div className="col-2 mr-5">
                             mmol/L
@@ -66,10 +66,10 @@ class Fat extends Component {
 
 const mapStateToProps = state => {
     return {
-        cholesterol: state.cholesterol,
-        HDLcholesterol: state.HDLcholesterol,
-        LDLcholesterol: state.LDLcholesterol,
-        triglycerides: state.triglycerides
+        cholesterol: state.results.cholesterol,
+        hdlCholesterol: state.results.hdlCholesterol,
+        ldlCholesterol: state.results.ldlCholesterol,
+        triglycerides: state.results.triglycerides
     }
 }
 

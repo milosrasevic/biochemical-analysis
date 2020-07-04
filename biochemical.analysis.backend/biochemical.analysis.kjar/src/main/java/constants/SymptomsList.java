@@ -45,7 +45,6 @@ public class SymptomsList {
     public static final String MUSCLE_TWITCHES = "muscleTwitches";
     public static final String FREQUENT_URINATION = "frequentUrination";
     public static final String RAPID_WEIGHT_GAIN = "rapidWeightGain";
-    public static final String LACK_OF_APPETITE = "lackOfAppetite";
     public static final String SWELLING_ABDOMEN = "swellingAbdomen";
     public static final String BLOOD_IN_URINE = "bloodInUrine";
     public static final String BACK_PAIN = "backPain";
@@ -73,7 +72,6 @@ public class SymptomsList {
     public static final String DECREASED_MUSCLE_TONE = "decreasedMuscleTone";
     public static final String EXCESSIVE_BLEEDING = "excessiveBleeding";
     public static final String LARGE_BRUISES = "largeBruises";
-    public static final String SWELLING_JOINTS = "swellingJoints";
     public static final String BLOOD_IN_STOOL = "bloodInStool";
     public static final String LOSS_OF_SEX_DRIVE = "lossOfSexDrive";
     public static final String IMPOTENCE = "impotence";
@@ -81,7 +79,25 @@ public class SymptomsList {
     public static final String BLEEDING_GUMS = "bleedingGums";
     public static final String NUMBNESS_IN_EXTREMITIES = "numbnessInExtremities";
     public static final String TINGLING_IN_EXTREMITIES = "tinglingInExtremities";
-
+    public static final String SWEATING_DURING_NIGHT = "sweatingDuringNight";
+    public static final String FREQUENT_INFECTIONS = "frequentInfections";
+    public static final String WATERY_DIARRHEA = "wateryDiarrhea";
+    public static final String ABDOMINAL_PAIN = "abdominalPain";
+    public static final String BLOATING = "bloating";
+    public static final String EXCESSIVE_GAS = "excessiveGas";
+    public static final String CHILLS = "chills";
+    public static final String RASH = "rash";
+    public static final String SORE_THROAT = "soreThroat";
+    public static final String MOUTH_ULCERS = "mouthUlcers";
+    public static final String DIARRHEA = "diarrhea";
+    public static final String RUNNY_NOSE = "runnyNose";
+    public static final String CONSTIPATION = "constipation";
+    public static final String DIZZINESS = "dizziness";
+    public static final String LEG_PAIN = "legPain";
+    public static final String INCREASED_THIRST = "increasedThirst";
+    public static final String EXTREME_HUNGER = "extremeHunger";
+    public static final String STIFF_NECK = "stiffNeck";
+    public static final String CONFUSION = "confusion";
 
     public static final ArrayList<String> aplasticAnemiaSymptoms = new ArrayList<String>(
             Arrays.asList(FATIGUE, SHORTNESS_OF_BREATH, RAPID_HEART_RATE, IRREGULAR_HEART_RATE,
@@ -125,7 +141,7 @@ public class SymptomsList {
 
     public static final ArrayList<String> heartFailureSymptoms = new ArrayList<String>(
             Arrays.asList(SHORTNESS_OF_BREATH, FATIGUE, SWELLING_LEGS, RAPID_HEART_RATE, IRREGULAR_HEART_RATE,
-                    SWELLING_ABDOMEN, RAPID_WEIGHT_GAIN, LACK_OF_APPETITE, NAUSEA, SHORTNESS_OF_BREATH,
+                    SWELLING_ABDOMEN, RAPID_WEIGHT_GAIN, LOSS_OF_APPETITE, NAUSEA, SHORTNESS_OF_BREATH,
                     CHEST_PAIN)
     );
 
@@ -161,7 +177,7 @@ public class SymptomsList {
     );
 
     public static final ArrayList<String> hemophiliaSymptoms = new ArrayList<String>(
-            Arrays.asList(EXCESSIVE_BLEEDING, LARGE_BRUISES, SWELLING_JOINTS, ACHING_JOINTS, BLOOD_IN_URINE,
+            Arrays.asList(EXCESSIVE_BLEEDING, LARGE_BRUISES, SWOLLEN_JOINTS, ACHING_JOINTS, BLOOD_IN_URINE,
                     BLOOD_IN_STOOL, NOSE_BLEEDING)
     );
 
@@ -172,6 +188,63 @@ public class SymptomsList {
 
     public static final ArrayList<String> polycythemiaVeraSymptoms = new ArrayList<String>(
             Arrays.asList(ITCHY_SKIN, NUMBNESS_IN_EXTREMITIES, TINGLING_IN_EXTREMITIES, UPPER_ABDOMINAL_PAIN,
-                    NOSE_BLEEDING, BLEEDING_GUMS, SWELLING_JOINTS, SHORTNESS_OF_BREATH)
+                    NOSE_BLEEDING, BLEEDING_GUMS, SWOLLEN_JOINTS, SHORTNESS_OF_BREATH)
+    );
+
+    public static final ArrayList<String> leukocytosisSymptoms = new ArrayList<String>(
+            Arrays.asList(SWOLLEN_LYMPH_NODES, FATIGUE, FEVER, UPPER_ABDOMINAL_PAIN, SWEATING_DURING_NIGHT,
+                    UNEXPLAINED_WEIGHT_LOSS, FREQUENT_INFECTIONS)
+    );
+
+    public static final ArrayList<String> blastocystisSymptoms = new ArrayList<String>(
+            Arrays.asList(WATERY_DIARRHEA, NAUSEA, ABDOMINAL_PAIN, BLOATING, LOSS_OF_APPETITE, EXCESSIVE_GAS, FATIGUE)
+    );
+
+    public static final ArrayList<String> hivSymptoms = new ArrayList<String>(
+            Arrays.asList(FEVER, CHILLS , RASH , SWEATING_DURING_NIGHT, ACHING_MUSCLES, SORE_THROAT, FATIGUE,
+                    SWOLLEN_LYMPH_NODES, MOUTH_ULCERS)
+    );
+
+    public static final ArrayList<String> birdFluSymptoms = new ArrayList<String>(
+            Arrays.asList(COUGH, DIARRHEA , SHORTNESS_OF_BREATH , FEVER, ACHING_MUSCLES, HEADACHE, SORE_THROAT,
+                    RUNNY_NOSE)
+    );
+
+    public static final ArrayList<String> colonCancerSymptoms = new ArrayList<String>(
+            Arrays.asList(CONSTIPATION, DIARRHEA , BLOOD_IN_STOOL , ABDOMINAL_PAIN, FATIGUE, UNEXPLAINED_WEIGHT_LOSS)
+    );
+
+    public static final ArrayList<String> lungCancerSymptoms = new ArrayList<String>(
+            Arrays.asList(COUGH, SHORTNESS_OF_BREATH , CHEST_PAIN , HOARSENESS, UNEXPLAINED_WEIGHT_LOSS, BONE_PAIN,
+                    HEADACHE)
+    );
+
+    public static final ArrayList<String> chikungunyaVirusSymptoms = new ArrayList<String>(
+            Arrays.asList(FEVER, ACHING_JOINTS, HEADACHE, ACHING_MUSCLES, SWOLLEN_JOINTS, RASH)
+    );
+
+    public static final ArrayList<String> trenchFeverSymptoms = new ArrayList<String>(
+            Arrays.asList(FEVER, FATIGUE, DIZZINESS, HEADACHE, BACK_PAIN, LEG_PAIN)
+    );
+
+    public static final ArrayList<String> varicellaSymptoms = new ArrayList<String>(
+            Arrays.asList(FEVER, LOSS_OF_APPETITE, HEADACHE, FATIGUE)
+    );
+
+    public static final ArrayList<String> dengueSymptoms = new ArrayList<String>(
+            Arrays.asList(NAUSEA, VOMITING, RASH, ACHING_MUSCLES, ACHING_JOINTS, BONE_PAIN)
+    );
+
+    public static final ArrayList<String> diabetesSymptoms = new ArrayList<String>(
+            Arrays.asList(INCREASED_THIRST, FREQUENT_URINATION, EXTREME_HUNGER, UNEXPLAINED_WEIGHT_LOSS,
+                    FATIGUE, BLURRED_VISION, FREQUENT_INFECTIONS)
+    );
+
+    public static final ArrayList<String> malariaSymptoms = new ArrayList<String>(
+            Arrays.asList(FEVER, CHILLS, HEADACHE, NAUSEA, VOMITING, ACHING_MUSCLES, FATIGUE)
+    );
+
+    public static final ArrayList<String> meningitisSymptoms = new ArrayList<String>(
+            Arrays.asList(FEVER, STIFF_NECK, HEADACHE, NAUSEA, VOMITING, CONFUSION, RASH, EXCESSIVE_DAYTIME_SLEEPINESS)
     );
 }

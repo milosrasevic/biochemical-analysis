@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { handleChange, handleSubmit, sendResults } from '../../../store/actions/resultsActions';
+import { handleChange, sendResults } from '../../../store/actions/resultsActions';
 import { connect } from 'react-redux';
 
 class Blood extends Component {
@@ -11,22 +11,7 @@ class Blood extends Component {
         });
     }
 
-    handleSubmit = () => {
-        // let bloodAnalysis = {
-        //     leukocytes: this.state.leukocytes,
-        //     erythrocytes: this.state.erythrocytes,
-        //     thrombocytes: this.state.thrombocytes,
-        //     hematocrit: this.state.hematocrit,
-        //     hemoglobin: this.state.hemoglobin
-        // }
-
-        // let results = {
-        //     bloodAnalysis,
-        //     gender: 0
-        // }
-        this.props.sendResults(this.props.store);
-    }
-
+    
     render() {
         return (
             <div className="col-3 pb-3 border rounded ml-1 background-white">
@@ -35,7 +20,7 @@ class Blood extends Component {
                     <label htmlFor="inputLeukocytes" className="ml-4">Leukocytes:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="leukocytes" value={this.props.leukocytes  || ''} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputLeukocytes"/>
+                            <input type="text" name="leukocytes" value={this.props.leukocytes} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputLeukocytes"/>
                         </div>
                         <div className="col-2 mr-5">
                             *109/L
@@ -87,8 +72,6 @@ class Blood extends Component {
                         </div>
                     </div>                                 
                 </div>
-                
-                {/* <button onClick={this.handleSubmit} className="btn btn-primary">Submit</button> */}
             </div>
         )
     }
@@ -96,18 +79,16 @@ class Blood extends Component {
 
 const mapStateToProps = state => {
     return {
-        leukocytes: state.leukocytes,
-        erythrocytes: state.erythrocytes,
-        thrombocytes: state.thrombocytes,
-        hemoglobin: state.hemoglobin,
-        hematocrit: state.hematocrit,
-        store: state
+        leukocytes: state.results.leukocytes,
+        erythrocytes: state.results.erythrocytes,
+        thrombocytes: state.results.thrombocytes,
+        hemoglobin: state.results.hemoglobin,
+        hematocrit: state.results.hematocrit
     }
 }
 
 const mapDispatchToProps = {
     handleChange,
-    handleSubmit,
     sendResults
 }
 

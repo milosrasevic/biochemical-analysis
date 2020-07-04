@@ -44,8 +44,8 @@ class KidneysAnalysis extends Component {
 
 const mapStateToProps = state => {
     return {
-        urea: state.urea,
-        creatinine: state.creatinine
+        urea: state.results.urea,
+        creatinine: state.results.creatinine
     }
 }
 

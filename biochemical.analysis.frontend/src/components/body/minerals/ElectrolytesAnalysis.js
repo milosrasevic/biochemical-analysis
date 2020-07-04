@@ -45,8 +45,8 @@ class ElectrolytesAnalysis extends Component {
 
 const mapStateToProps = state => {
     return {
-        sodium: state.sodium,
-        potassium: state.potassium
+        sodium: state.results.sodium,
+        potassium: state.results.potassium
     }
 }
 

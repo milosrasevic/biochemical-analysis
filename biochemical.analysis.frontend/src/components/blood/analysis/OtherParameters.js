@@ -12,6 +12,13 @@ class OtherParameters extends Component {
         });
     }
 
+    handleCheck = (e) => {
+        this.props.handleChange({
+            name: e.target.name,
+            value: e.target.checked
+        });
+    }
+
     render() {
         return (
             <div className="col border rounded mx-1 background-white">
@@ -29,13 +36,13 @@ class OtherParameters extends Component {
                 </div>
                 <div className="form-group my-form-group mb-4">
                     <label htmlFor="inputProteins" className="mt-3">Proteins:</label>
-                    <input type="checkbox" name="proteins" value={this.props.proteins} onChange={this.handleChange} className="form-control my-form-control" id="inputProteins"/>
+                    <input type="checkbox" name="proteins" checked={this.props.proteins} onChange={this.handleCheck} className="form-control my-form-control" id="inputProteins"/>
                 </div>
                 <div className="form-group my-form-group text-left">
                     <label htmlFor="inputPT" className="mt-4 ml-4">PT:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="PT" value={this.props.PT} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputPT"/>
+                            <input type="text" name="pt" value={this.props.pt} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputPT"/>
                         </div>
                         <div className="col-2 mr-5">
                             seconds
@@ -49,9 +56,9 @@ class OtherParameters extends Component {
 
 const mapStateToProps = state => {
     return {
-        fibrinogen: state.fibrinogen,
-        proteins: state.proteins,
-        PT: state.PT
+        fibrinogen: state.results.fibrinogen,
+        proteins: state.results.proteins,
+        pt: state.pt
     }
 }
 

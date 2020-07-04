@@ -18,12 +18,11 @@ class BiochemicalParameters extends Component {
                 <h6 className="mt-2">Biochemical parameters</h6>
                 <div className="form-group my-form-group mt-3">
                     <label htmlFor="inputSerumLook">Serum look:</label>
-                    {/* <input type="text" name="serumLook" value={this.state.serumLook} onChange={this.handleChange} className="form-control my-form-control" id="inputSerumLook"/> */}
-                    <select className="form-control w-75 mx-auto" id="inputSerumLook">
-                        <option>Normal</option>
-                        <option>Hemolytic</option>
-                        <option>Icteric</option>
-                        <option>Lipemic</option>
+                    <select name="serumLook" value={this.props.serumLook} onChange={this.handleChange} className="form-control w-75 mx-auto" id="inputSerumLook">
+                        <option value="NORMAL">NORMAL</option>
+                        <option value="HEMOLYTIC">HEMOLYTIC</option>
+                        <option value="ICTERIC">ICTERIC</option>
+                        <option value="LIPEMIC">LIPEMIC</option>
                     </select>
                 </div>
                 <div className="form-group my-form-group mt-5 text-left">
@@ -45,8 +44,8 @@ class BiochemicalParameters extends Component {
 
 const mapStateToProps = state => {
     return {
-        serumLook: state.serumLook,
-        glucose: state.glucose
+        serumLook: state.results.serumLook,
+        glucose: state.results.glucose
     }
 }
 

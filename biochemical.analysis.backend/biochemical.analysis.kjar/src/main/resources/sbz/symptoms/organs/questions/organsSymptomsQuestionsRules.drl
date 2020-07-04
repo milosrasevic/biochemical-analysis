@@ -1,0 +1,42 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Results;
+import sbz.biochemical.analysis.model.analysis.PossibleDisease;
+import constants.Diseases;
+import constants.SymptomsList;
+import sbz.biochemical.analysis.model.analysis.SymptomsAndDiseases;
+
+global SymptomsAndDiseases symptomsAndDiseases;
+
+rule "Colon cancer questions"
+    when
+        $pd: PossibleDisease(description == Diseases.COLON_CANCER)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.colonCancerSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.COLON_CANCER);
+end
+
+rule "Lung cancer questions"
+    when
+        $pd: PossibleDisease(description == Diseases.LUNG_CANCER)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.lungCancerSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.LUNG_CANCER);
+end
+
+rule "Chikungunya virus questions"
+    when
+        $pd: PossibleDisease(description == Diseases.CHIKUNGUNYA_VIRUS)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.chikungunyaVirusSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.CHIKUNGUNYA_VIRUS);
+end
+
+rule "Trench fever questions"
+    when
+        $pd: PossibleDisease(description == Diseases.TRENCH_FEVER)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.trenchFeverSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.TRENCH_FEVER);
+end
+

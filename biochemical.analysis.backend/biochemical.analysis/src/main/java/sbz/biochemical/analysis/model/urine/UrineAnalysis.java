@@ -8,14 +8,12 @@ import java.io.Serializable;
 public class UrineAnalysis implements Serializable {
 
     private Urine urine;
-    private UrineColor urineColor;
 
     public UrineAnalysis() {
     }
 
-    public UrineAnalysis(Urine urine, UrineColor urineColor) {
+    public UrineAnalysis(Urine urine) {
         this.urine = urine;
-        this.urineColor = urineColor;
     }
 
     public Urine getUrine() {
@@ -26,11 +24,4 @@ public class UrineAnalysis implements Serializable {
         this.urine = urine;
     }
 
-    public UrineColor getUrineColor() {
-        return urineColor;
-    }
-
-    public void setUrineColor(UrineColor urineColor) {
-        this.urineColor = urineColor;
-    }
 }

@@ -66,10 +66,10 @@ class LiverAnalysis extends Component {
 
 const mapStateToProps = state => {
     return {
-        ALT: state.ALT,
-        AST: state.AST,
-        gamaGT: state.gamaGT,
-        bilirubin: state.bilirubin
+        ALT: state.results.ALT,
+        AST: state.results.AST,
+        gamaGT: state.results.gamaGT,
+        bilirubin: state.results.bilirubin
     }
 }
 

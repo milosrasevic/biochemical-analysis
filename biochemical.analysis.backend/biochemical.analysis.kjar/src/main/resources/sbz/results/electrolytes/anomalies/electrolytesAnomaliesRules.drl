@@ -1,0 +1,37 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Results;
+import sbz.biochemical.analysis.model.minerals.Electrolytes;
+import sbz.biochemical.analysis.model.Gender;
+import sbz.biochemical.analysis.model.analysis.Anomaly;
+
+import constants.ReferenceValues;
+import constants.Anomalies;
+
+rule "Sodium - High"
+    when
+        $r: Results(electrolytes.sodium > ReferenceValues.SODIUM_MAX_MMOL_L)
+    then
+        insert(new Anomaly(Anomalies.SODIUM_ANOMALY_HIGH));
+end
+
+rule "Sodium - Low"
+    when
+        $r: Results(electrolytes.sodium < ReferenceValues.SODIUM_MIN_MMOL_L)
+    then
+        insert(new Anomaly(Anomalies.SODIUM_ANOMALY_LOW));
+end
+
+rule "Potassium - High"
+    when
+        $r: Results(electrolytes.potassium > ReferenceValues.POTASSIUM_MAX_MMOL_L)
+    then
+        insert(new Anomaly(Anomalies.POTASSIUM_ANOMALY_HIGH));
+end
+
+rule "Potassium - Low"
+    when
+        $r: Results(electrolytes.potassium < ReferenceValues.POTASSIUM_MIN_MMOL_L)
+    then
+        insert(new Anomaly(Anomalies.POTASSIUM_ANOMALY_LOW));
+end

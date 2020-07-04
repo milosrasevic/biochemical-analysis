@@ -82,8 +82,20 @@ public class Anomalies {
     public static final String BILIRUBIN_ANOMALY_LOW = "BILIRUBIN_ANOMALY_LOW";
 
     public static final String GLUCOSE_URINE_ANOMALY_HIGH = "GLUCOSE_URINE_ANOMALY_HIGH";
-    public static final String GLUCOSE_URINE_ANOMALY_LOW = "GLUCOSE_URINE_ANOMALY_LOW";
-
     public static final String PROTEINS_ANOMALY_HIGH = "PROTEINS_ANOMALY_HIGH";
-    public static final String PROTEINS_ANOMALY_LOW = "PROTEINS_ANOMALY_LOW";
+
+    public static final String URINE_COLOR_YELLOW = "URINE_COLOR_YELLOW";
+    public static final String URINE_COLOR_PINK = "URINE_COLOR_PINK";
+    public static final String URINE_COLOR_ORANGE = "URINE_COLOR_ORANGE";
+    public static final String URINE_COLOR_DARK_BROWN = "URINE_COLOR_DARK_BROWN";
+
+    public static final String UROBILINOGEN_ANOMALY = "UROBILINOGEN_ANOMALY";
+    public static final String BILIRUBIN_ANOMALY = "BILIRUBIN_ANOMALY";
+    public static final String KETONES_ANOMALY = "KETONES_ANOMALY";
+    public static final String LEUKOCYTES_ANOMALY = "LEUKOCYTES_ANOMALY";
+    public static final String BACTERIA_ANOMALY = "BACTERIA_ANOMALY";
+    public static final String YEAST_ANOMALY = "YEAST_ANOMALY";
+    public static final String CYLINDERS_ANOMALY = "CYLINDERS_ANOMALY";
+    public static final String SEMEN_ANOMALY = "SEMEN_ANOMALY";
+
 }

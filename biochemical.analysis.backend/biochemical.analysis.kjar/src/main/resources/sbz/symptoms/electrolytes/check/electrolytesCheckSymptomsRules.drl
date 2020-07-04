@@ -1,0 +1,104 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.SymptomsAndDiseases;
+import sbz.biochemical.analysis.model.analysis.Diagnosis;
+import constants.SymptomsList;
+import constants.Diseases;
+
+global Diagnosis diagnosis;
+
+rule "Leukocytosis symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.LEUKOCYTOSIS)
+        $count: Number(intValue >= 2) from accumulate(
+            String(
+                toString() memberOf SymptomsList.leukocytosisSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Leukocytosis";
+        if($count.intValue() > 3) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 2) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end
+
+rule "Blastocystis symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.BLASTOCYSTIS)
+        $count: Number(intValue >= 2) from accumulate(
+            String(
+                toString() memberOf SymptomsList.blastocystisSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Blastocystis";
+        if($count.intValue() > 3) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 2) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end
+
+rule "HIV symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.HIV)
+        $count: Number(intValue >= 2) from accumulate(
+            String(
+                toString() memberOf SymptomsList.hivSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "HIV";
+        if($count.intValue() > 3) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 2) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end
+
+rule "Bird Flu symptoms"
+    when
+        $s: SymptomsAndDiseases($sl: symptoms, $dl: diseasesList contains Diseases.BIRD_FLU)
+        $count: Number(intValue >= 2) from accumulate(
+            String(
+                toString() memberOf SymptomsList.birdFluSymptoms
+            ) from $sl,
+            init(int count = 0;),
+            action(count += 1;),
+            result(count)
+        )
+    then
+        String disease = "Bird Flu";
+        if($count.intValue() > 3) {
+            diagnosis.setMostLikelyDisease(disease);
+        }
+
+        if ($count.intValue() > 2) {
+            diagnosis.getHighChanceDiseases().add(disease);
+        } else {
+            diagnosis.getPossibleDiseases().add(disease);
+        }
+end

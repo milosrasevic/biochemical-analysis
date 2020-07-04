@@ -1,0 +1,45 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Anomaly;
+import sbz.biochemical.analysis.model.analysis.PossibleDisease;
+
+import constants.Diseases;
+import constants.Anomalies;
+
+rule "Leukocytosis indicators"
+    when
+        $a1: Anomaly(description == Anomalies.SODIUM_ANOMALY_HIGH) and
+        $a2: Anomaly(description == Anomalies.POTASSIUM_ANOMALY_HIGH)
+    then
+        insert(new PossibleDisease(Diseases.LEUKOCYTOSIS));
+end
+
+rule "Blastocystis indicators"
+    when
+        $a1: Anomaly(description == Anomalies.SODIUM_ANOMALY_LOW) and
+        $a2: Anomaly(description == Anomalies.POTASSIUM_ANOMALY_LOW)
+    then
+        insert(new PossibleDisease(Diseases.BLASTOCYSTIS));
+end
+
+rule "HIV indicators"
+    when
+        $a1: Anomaly(description == Anomalies.SODIUM_ANOMALY_HIGH) and
+        $a2: Anomaly(description == Anomalies.POTASSIUM_ANOMALY_LOW)
+    then
+        insert(new PossibleDisease(Diseases.HIV));
+end
+
+rule "Bird flu indicators"
+    when
+        $a1: Anomaly(description == Anomalies.SODIUM_ANOMALY_LOW) and
+        $a2: Anomaly(description == Anomalies.POTASSIUM_ANOMALY_HIGH)
+    then
+        insert(new PossibleDisease(Diseases.BIRD_FLU));
+end
+
+
+
+
+
+

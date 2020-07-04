@@ -1,0 +1,42 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Results;
+import sbz.biochemical.analysis.model.analysis.PossibleDisease;
+import constants.Diseases;
+import constants.SymptomsList;
+import sbz.biochemical.analysis.model.analysis.SymptomsAndDiseases;
+
+global SymptomsAndDiseases symptomsAndDiseases;
+
+rule "Leukocytosis questions"
+    when
+        $pd: PossibleDisease(description == Diseases.LEUKOCYTOSIS)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.leukocytosisSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.LEUKOCYTOSIS);
+end
+
+rule "Blastocystis questions"
+    when
+        $pd: PossibleDisease(description == Diseases.BLASTOCYSTIS)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.blastocystisSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.BLASTOCYSTIS);
+end
+
+rule "HIV questions"
+    when
+        $pd: PossibleDisease(description == Diseases.HIV)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.hivSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.HIV);
+end
+
+
+rule "Bird Flu questions"
+    when
+        $pd: PossibleDisease(description == Diseases.BIRD_FLU)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.birdFluSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.BIRD_FLU);
+end

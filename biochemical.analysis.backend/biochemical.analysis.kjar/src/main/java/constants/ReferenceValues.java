@@ -81,7 +81,7 @@ public class ReferenceValues {
     //Organs - kidneys
     public static final double UREA_MIN_MALE_MMOL_L = 3.2;
     public static final double UREA_MAX_MALE_MMOL_L = 7.3;
-    public static final double UREA_MIN_FEALE_MMOL_L = 2.6;
+    public static final double UREA_MIN_FEMALE_MMOL_L = 2.6;
     public static final double UREA_MAX_FEMALE_MMOL_L = 6.7;
 
     public static final double CREATININE_MIN_MALE_MG_DL = 0.6;

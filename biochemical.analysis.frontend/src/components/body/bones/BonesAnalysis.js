@@ -30,7 +30,7 @@ class BonesAnalysis extends Component {
                     <label htmlFor="inputAlkalinePhosphatase" className="ml-4">Alkaline phospatase:</label>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="alkalinePhospatase" value={this.props.alkalinePhospatase} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputAlkalinePhosphatase"/>
+                            <input type="text" name="alkalinePhosphatase" value={this.props.alkalinePhosphatase} onChange={this.handleChange} className="form-control my-form-control ml-4" id="inputAlkalinePhosphatase"/>
                         </div>
                         <div className="col-2 mr-5">
                             U/L
@@ -55,9 +55,9 @@ class BonesAnalysis extends Component {
 
 const mapStateToProps = state => {
     return {
-        iron: state.iron,
-        alkalinePhospatase: state.alkalinePhospatase,
-        uricAcid: state.uricAcid
+        iron: state.results.iron,
+        alkalinePhosphatase: state.results.alkalinePhosphatase,
+        uricAcid: state.results.uricAcid
     }
 }
 

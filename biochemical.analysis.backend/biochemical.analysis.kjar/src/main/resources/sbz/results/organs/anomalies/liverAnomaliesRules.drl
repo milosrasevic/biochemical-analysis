@@ -1,0 +1,67 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Results;
+import sbz.biochemical.analysis.model.organs.OrgansAnalysis;
+import sbz.biochemical.analysis.model.organs.analysis.LiverCondition;
+import sbz.biochemical.analysis.model.Gender;
+import sbz.biochemical.analysis.model.analysis.Anomaly;
+
+import constants.ReferenceValues;
+import constants.Anomalies;
+
+rule "ALT - High"
+    when
+        $r: Results(organsAnalysis.liverCondition.alt > ReferenceValues.ALT_MAX_U_L)
+    then
+        insert(new Anomaly(Anomalies.ALT_ANOMALY_HIGH));
+end
+
+rule "ALT - Low"
+    when
+        $r: Results(organsAnalysis.liverCondition.alt < ReferenceValues.ALT_MIN_U_L)
+    then
+        insert(new Anomaly(Anomalies.ALT_ANOMALY_LOW));
+end
+
+rule "AST - High"
+    when
+        $r: Results(organsAnalysis.liverCondition.ast > ReferenceValues.AST_MAX_U_L)
+    then
+        insert(new Anomaly(Anomalies.AST_ANOMALY_HIGH));
+end
+
+rule "AST - Low"
+    when
+        $r: Results(organsAnalysis.liverCondition.ast < ReferenceValues.AST_MIN_U_L)
+    then
+        insert(new Anomaly(Anomalies.AST_ANOMALY_LOW));
+end
+
+
+rule "Gama GT - High"
+    when
+        $r: Results(organsAnalysis.liverCondition.gamaGT > ReferenceValues.GAMA_GT_MAX_U_L)
+    then
+        insert(new Anomaly(Anomalies.GAMA_GT_ANOMALY_HIGH));
+end
+
+rule "Gama GT - Low"
+    when
+        $r: Results(organsAnalysis.liverCondition.gamaGT < ReferenceValues.GAMA_GT_MIN_U_L)
+    then
+        insert(new Anomaly(Anomalies.GAMA_GT_ANOMALY_LOW));
+end
+
+rule "Bilirubin - High"
+    when
+        $r: Results(organsAnalysis.liverCondition.bilirubin > ReferenceValues.BILIRUBIN_MAX_MMOL_L)
+    then
+        insert(new Anomaly(Anomalies.BILIRUBIN_ANOMALY_HIGH));
+end
+
+rule "Bilirubin - Low"
+    when
+        $r: Results(organsAnalysis.liverCondition.bilirubin < ReferenceValues.BILIRUBIN_MIN_MMOL_L)
+    then
+        insert(new Anomaly(Anomalies.BILIRUBIN_ANOMALY_LOW));
+end

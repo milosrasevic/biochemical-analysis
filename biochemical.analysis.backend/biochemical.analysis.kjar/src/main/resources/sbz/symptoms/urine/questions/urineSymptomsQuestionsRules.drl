@@ -1,0 +1,49 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Results;
+import sbz.biochemical.analysis.model.analysis.PossibleDisease;
+import constants.Diseases;
+import constants.SymptomsList;
+import sbz.biochemical.analysis.model.analysis.SymptomsAndDiseases;
+
+global SymptomsAndDiseases symptomsAndDiseases;
+
+rule "Varicella questions"
+    when
+        $pd: PossibleDisease(description == Diseases.VARICELLA)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.varicellaSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.VARICELLA);
+end
+
+rule "Dengue questions"
+    when
+        $pd: PossibleDisease(description == Diseases.DENGUE)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.dengueSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.DENGUE);
+end
+
+rule "Diabetes questions"
+    when
+        $pd: PossibleDisease(description == Diseases.DIABETES)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.diabetesSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.DIABETES);
+end
+
+rule "Malaria questions"
+    when
+        $pd: PossibleDisease(description == Diseases.MALARIA)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.malariaSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.MALARIA);
+end
+
+rule "Meningitis questions"
+    when
+        $pd: PossibleDisease(description == Diseases.MENINGITIS)
+    then
+        symptomsAndDiseases.getSymptoms().addAll(SymptomsList.meningitisSymptoms);
+        symptomsAndDiseases.getDiseasesList().add(Diseases.MENINGITIS);
+end

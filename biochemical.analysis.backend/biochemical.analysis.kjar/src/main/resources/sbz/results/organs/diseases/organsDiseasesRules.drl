@@ -1,0 +1,55 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.analysis.Anomaly;
+import sbz.biochemical.analysis.model.analysis.PossibleDisease;
+
+import constants.Diseases;
+import constants.Anomalies;
+
+rule "Colon cancer indicators"
+    when
+        $a1: Anomaly(description == Anomalies.UREA_ANOMALY_HIGH) and
+        $a2: Anomaly(description == Anomalies.ALT_ANOMALY_LOW) and
+        $a3: Anomaly(description == Anomalies.GAMA_GT_ANOMALY_LOW)
+    then
+        insert(new PossibleDisease(Diseases.COLON_CANCER));
+end
+
+rule "Lung cancer indicators"
+    when
+        $a1: Anomaly(description == Anomalies.UREA_ANOMALY_HIGH) and
+        $a2: Anomaly(description == Anomalies.ALT_ANOMALY_HIGH) and
+        $a3: Anomaly(description == Anomalies.AST_ANOMALY_HIGH)
+    then
+        insert(new PossibleDisease(Diseases.LUNG_CANCER));
+end
+
+
+rule "Prostate cancer indicators"
+    when
+        $a1: Anomaly(description == Anomalies.UREA_ANOMALY_LOW) and
+        $a2: Anomaly(description == Anomalies.BILIRUBIN_ANOMALY_HIGH) and
+        $a3: Anomaly(description == Anomalies.CREATININE_ANOMALY_HIGH)
+    then
+        insert(new PossibleDisease(Diseases.PROSTATE_CANCER));
+end
+
+
+rule "Chikungunya virus indicators"
+    when
+        $a1: Anomaly(description == Anomalies.GAMA_GT_ANOMALY_HIGH) and
+        $a2: Anomaly(description == Anomalies.CREATININE_ANOMALY_LOW) and
+        $a3: Anomaly(description == Anomalies.AST_ANOMALY_LOW)
+    then
+        insert(new PossibleDisease(Diseases.CHIKUNGUNYA_VIRUS));
+end
+
+
+rule "Trench fever indicators"
+    when
+        $a1: Anomaly(description == Anomalies.CREATININE_ANOMALY_LOW) and
+        $a2: Anomaly(description == Anomalies.ALT_ANOMALY_LOW) and
+        $a3: Anomaly(description == Anomalies.AST_ANOMALY_LOW)
+    then
+        insert(new PossibleDisease(Diseases.TRENCH_FEVER));
+end
