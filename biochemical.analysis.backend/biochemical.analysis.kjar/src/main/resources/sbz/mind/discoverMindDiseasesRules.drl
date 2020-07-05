@@ -1,0 +1,38 @@
+package sbz;
+
+import sbz.biochemical.analysis.model.mind.MentalDisease;
+import sbz.biochemical.analysis.model.mind.MentalDiseases;
+import sbz.biochemical.analysis.model.mind.DailyMindState;
+import sbz.biochemical.analysis.model.mind.Mood;
+import sbz.biochemical.analysis.model.mind.DailyMindStateEvent;
+import sbz.biochemical.analysis.model.mind.UnhealthyFeelingsEvent;
+import sbz.biochemical.analysis.model.mind.DiseaseDiscovered;
+
+global MentalDiseases mentalDiseases;
+
+rule "Person is feeling sad 10 days in a row"
+    when
+        $dmse1: DailyMindStateEvent(mood == Mood.SAD, $user: user)
+        Number(intValue >= 10) from accumulate(
+            $dmse2: DailyMindStateEvent(
+                this != $dmse1,
+                user == $user,
+                mood == Mood.SAD,
+                this meets[10s] $dmse1
+            ),
+            count($dmse2)
+        )
+        not (UnhealthyFeelingsEvent(feelings == "Depression"))
+    then
+        insert(new UnhealthyFeelingsEvent("Depression", $user.toString()));
+end
+
+rule "Depression event"
+    when
+        $ufe: UnhealthyFeelingsEvent(feelings == "Depression", $u: user);
+        not(DiseaseDiscovered(user == $u.toString()))
+    then
+        insert(new DiseaseDiscovered($u.toString()));
+        mentalDiseases.getMentalDiseases().add(new MentalDisease($ufe.getFeelings(), $u));
+        delete($ufe);
+end
